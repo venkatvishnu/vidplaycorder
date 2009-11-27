@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPlayer", "VideoPlayer\VideoPlayer.csproj", "{869FEB0E-8791-4417-AB42-311E44D76D17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayVideo", "VideoPlayer\DisplayVideo.csproj", "{869FEB0E-8791-4417-AB42-311E44D76D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoReccorder", "VideoReccorder\VideoReccorder.csproj", "{182543D9-8AE4-4112-890E-3EC4C03CEE45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{869FEB0E-8791-4417-AB42-311E44D76D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{869FEB0E-8791-4417-AB42-311E44D76D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{869FEB0E-8791-4417-AB42-311E44D76D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182543D9-8AE4-4112-890E-3EC4C03CEE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182543D9-8AE4-4112-890E-3EC4C03CEE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182543D9-8AE4-4112-890E-3EC4C03CEE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182543D9-8AE4-4112-890E-3EC4C03CEE45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
