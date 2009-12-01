@@ -33,6 +33,8 @@
             this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sélectionnerFichierDenregistrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lectureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lecturePauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,17 +45,15 @@
             this.enregistrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.débutArrêtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traitementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paramètresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playButton = new System.Windows.Forms.Button();
             this.rewindButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.sélectionnerFichierDenregistrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paramètresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.reccordButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,31 +83,43 @@
             this.toolStripMenuItem3,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
             // ouvrirToolStripMenuItem
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             // 
             // fermerToolStripMenuItem
             // 
             this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
-            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.fermerToolStripMenuItem.Text = "Fermer";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(240, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 6);
+            // 
+            // sélectionnerFichierDenregistrementToolStripMenuItem
+            // 
+            this.sélectionnerFichierDenregistrementToolStripMenuItem.Name = "sélectionnerFichierDenregistrementToolStripMenuItem";
+            this.sélectionnerFichierDenregistrementToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.sélectionnerFichierDenregistrementToolStripMenuItem.Text = "Créer le fichier d\'enregistrement";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 6);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // lectureToolStripMenuItem
             // 
@@ -118,36 +130,36 @@
             this.rembobinToolStripMenuItem,
             this.avanceRapideToolStripMenuItem});
             this.lectureToolStripMenuItem.Name = "lectureToolStripMenuItem";
-            this.lectureToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.lectureToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.lectureToolStripMenuItem.Text = "Lecture";
             // 
             // lecturePauseToolStripMenuItem
             // 
             this.lecturePauseToolStripMenuItem.Name = "lecturePauseToolStripMenuItem";
-            this.lecturePauseToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.lecturePauseToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.lecturePauseToolStripMenuItem.Text = "Lecture/Pause";
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
-            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.arrêterToolStripMenuItem.Text = "Arrêter";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(151, 6);
             // 
             // rembobinToolStripMenuItem
             // 
             this.rembobinToolStripMenuItem.Name = "rembobinToolStripMenuItem";
-            this.rembobinToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.rembobinToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.rembobinToolStripMenuItem.Text = "Rembobinage";
             // 
             // avanceRapideToolStripMenuItem
             // 
             this.avanceRapideToolStripMenuItem.Name = "avanceRapideToolStripMenuItem";
-            this.avanceRapideToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.avanceRapideToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.avanceRapideToolStripMenuItem.Text = "Avance rapide";
             // 
             // enregistrementToolStripMenuItem
@@ -155,13 +167,13 @@
             this.enregistrementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.débutArrêtToolStripMenuItem});
             this.enregistrementToolStripMenuItem.Name = "enregistrementToolStripMenuItem";
-            this.enregistrementToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.enregistrementToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.enregistrementToolStripMenuItem.Text = "Enregistrement";
             // 
             // débutArrêtToolStripMenuItem
             // 
             this.débutArrêtToolStripMenuItem.Name = "débutArrêtToolStripMenuItem";
-            this.débutArrêtToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.débutArrêtToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.débutArrêtToolStripMenuItem.Text = "Début/Arrêt";
             // 
             // traitementToolStripMenuItem
@@ -169,8 +181,15 @@
             this.traitementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.paramètresToolStripMenuItem});
             this.traitementToolStripMenuItem.Name = "traitementToolStripMenuItem";
-            this.traitementToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.traitementToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.traitementToolStripMenuItem.Text = "Traitement";
+            // 
+            // paramètresToolStripMenuItem
+            // 
+            this.paramètresToolStripMenuItem.Name = "paramètresToolStripMenuItem";
+            this.paramètresToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.paramètresToolStripMenuItem.Text = "Paramètres";
+            this.paramètresToolStripMenuItem.Click += new System.EventHandler(this.paramètresToolStripMenuItem_Click);
             // 
             // playButton
             // 
@@ -237,23 +256,14 @@
             this.panel1.Size = new System.Drawing.Size(397, 69);
             this.panel1.TabIndex = 9;
             // 
-            // toolStripMenuItem3
+            // reccordButton
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(240, 6);
-            // 
-            // sélectionnerFichierDenregistrementToolStripMenuItem
-            // 
-            this.sélectionnerFichierDenregistrementToolStripMenuItem.Name = "sélectionnerFichierDenregistrementToolStripMenuItem";
-            this.sélectionnerFichierDenregistrementToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.sélectionnerFichierDenregistrementToolStripMenuItem.Text = "Créer le fichier d\'enregistrement";
-            // 
-            // paramètresToolStripMenuItem
-            // 
-            this.paramètresToolStripMenuItem.Name = "paramètresToolStripMenuItem";
-            this.paramètresToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.paramètresToolStripMenuItem.Text = "Paramètres";
-            this.paramètresToolStripMenuItem.Click += new System.EventHandler(this.paramètresToolStripMenuItem_Click);
+            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
+            this.reccordButton.Location = new System.Drawing.Point(308, 8);
+            this.reccordButton.Name = "reccordButton";
+            this.reccordButton.Size = new System.Drawing.Size(52, 52);
+            this.reccordButton.TabIndex = 6;
+            this.reccordButton.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -265,15 +275,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // reccordButton
-            // 
-            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
-            this.reccordButton.Location = new System.Drawing.Point(308, 8);
-            this.reccordButton.Name = "reccordButton";
-            this.reccordButton.Size = new System.Drawing.Size(52, 52);
-            this.reccordButton.TabIndex = 6;
-            this.reccordButton.UseVisualStyleBackColor = true;
             // 
             // DisplayVideo
             // 
