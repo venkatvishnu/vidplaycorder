@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DirectShowLib-2005, Version=2.0.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DirectShowLib-2005.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -60,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcretPlayerState.cs" />
     <Compile Include="DisplayVideo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +77,7 @@
     <Compile Include="EditionParametreTraitement.Designer.cs">
       <DependentUpon>EditionParametreTraitement.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerStateController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DisplayVideo.resx">
@@ -100,6 +106,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Traitement.cs" />
+    <Compile Include="VideoSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\00763808-photo-extrait-de-les-simpson-le-film.jpg" />

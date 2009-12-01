@@ -19,6 +19,11 @@ namespace VideoPlayer
         private void paramètresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new EditionParametreTraitement().ShowDialog();
+        }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }       
     }
 }
