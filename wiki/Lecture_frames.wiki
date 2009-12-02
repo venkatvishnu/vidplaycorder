@@ -1,5 +1,5 @@
 #summary Méthode pour la lecture.
-#labels Phase-Requirements
+#labels Featured,Phase-Requirements
 
 = Introduction =
 
