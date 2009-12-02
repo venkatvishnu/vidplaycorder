@@ -1,0 +1,9 @@
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\bin\Debug\PlayWnd.exe
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\bin\Debug\PlayWnd.pdb
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\bin\Debug\DirectShowLib-2005.dll
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\DirectShowLib.Sample.AboutBoxWnd.resources
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\DirectShowLib.Sample.MainForm.resources
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\PlayWnd-2005.csproj.GenerateResource.Cache
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\PlayWnd.exe
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Players\PlayWnd\obj\Debug\PlayWnd.pdb

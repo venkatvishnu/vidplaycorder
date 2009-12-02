@@ -1,0 +1,8 @@
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\bin\Debug\DxScan.exe
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\bin\Debug\DxScan.pdb
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\bin\Debug\DirectShowLib-2005.dll
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\obj\Debug\DxScan.Form1.resources
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\obj\Debug\DxScan-2005.csproj.GenerateResource.Cache
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\obj\Debug\DxScan.exe
+C:\Documents and Settings\moi\Bureau\6GEN536\Projet\DirectShowLibV2-0\Samples\Editing\DxScan\obj\Debug\DxScan.pdb
