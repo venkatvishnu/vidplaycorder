@@ -9,10 +9,13 @@ namespace VideoPlayer
 {
     class VideoSource
     {
+        private string filename = string.Empty;
+
         public VideoSource()
         {
 
         }
+
         public void getCurrentFrame()
         {
 

@@ -24,6 +24,14 @@ namespace VideoPlayer
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }       
+        }
+
+        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+            }                
+        }
     }
 }
