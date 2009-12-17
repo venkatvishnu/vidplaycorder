@@ -53,12 +53,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.reccordButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.framePictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -267,16 +267,16 @@
             this.reccordButton.TabIndex = 6;
             this.reccordButton.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // framePictureBox
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::VideoPlayer.Properties.Resources._00763808_photo_extrait_de_les_simpson_le_film;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(741, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.framePictureBox.Image = global::VideoPlayer.Properties.Resources._00763808_photo_extrait_de_les_simpson_le_film;
+            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
+            this.framePictureBox.Name = "framePictureBox";
+            this.framePictureBox.Size = new System.Drawing.Size(741, 400);
+            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.framePictureBox.TabIndex = 0;
+            this.framePictureBox.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -287,17 +287,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 499);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.framePictureBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DisplayVideo";
             this.Text = "nomVideo";
+            this.Shown += new System.EventHandler(this.DisplayVideo_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,7 +306,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox framePictureBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
