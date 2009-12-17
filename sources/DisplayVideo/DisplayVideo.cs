@@ -6,11 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VideoPlayer.State;
 
 namespace VideoPlayer
 {
-    public partial class DisplayVideo : Form
+    public partial class DisplayVideo : Form, IFrameDisplay
     {
+
+        private delegate void RefreshImageDelegate(Bitmap image);
+
+        private State.PlayerStateController _controller;
+
         public DisplayVideo()
         {
             InitializeComponent();
@@ -33,5 +39,27 @@ namespace VideoPlayer
 
             }                
         }
+
+        private void RefreshImage(Bitmap image)
+        {
+            framePictureBox.Image = image;
+        }
+
+        
+        
+
+        public void UpdateFrame(Bitmap frame)
+        {
+            RefreshImageDelegate del = RefreshImage;
+
+            this.BeginInvoke(del, new[] {frame});
+        }
+
+        private void DisplayVideo_Shown(object sender, EventArgs e)
+        {
+            _controller = new PlayerStateController(this);
+        }
+
+
     }
 }
