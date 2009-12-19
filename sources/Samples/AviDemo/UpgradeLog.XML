@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="AviDemo">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\moi\Bureau\AviDemo\AviDemo.sln">
+</Property><Property Name="Date" Value="samedi 19 décembre 2009">
+</Property><Property Name="Time" Value="13:27">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="AviDemo.sln" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviDemo.sln">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="AviDemo.csproj" Description="Project file successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviDemo.csproj">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="FrameRateForm.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\FrameRateForm.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="FrameRateForm.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\FrameRateForm.Designer.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="EditControl.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\EditControl.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="EditControl.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\EditControl.Designer.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="ExploreControl.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\ExploreControl.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="ExploreControl.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\ExploreControl.Designer.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="CopyForm.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\CopyForm.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="CopyForm.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\CopyForm.Designer.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="MainForm.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\MainForm.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="MainForm.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\MainForm.Designer.cs">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="App.ico" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\App.ico">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="ExploreControl.resx" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\ExploreControl.resx">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="FrameRateForm.resx" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\FrameRateForm.resx">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="AviDemo.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AviDemo" Source="AviDemo.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="AviFile" Source="..\AviFile\AviFile.csproj" Description="Warning: The project file is being backed up to a relative path that differs from the original solution relative path.  The difference in folder hierarchy may create problems in opening or building the backed up solution and project.">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviFile.csproj" Description="Project file successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AviFile.csproj">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AssemblyInfo.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AudioStream.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AudioStream.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\Avi.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\Avi.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviManager.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AviManager.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviPlayer.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AviPlayer.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviStream.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\AviStream.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\EditableVideoStream.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\EditableVideoStream.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\VideoStream.cs" Description="File successfully backed up as C:\Documents and Settings\moi\Bureau\AviDemo\Backup\AviFile\VideoStream.cs">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviFile.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AviFile" Source="..\AviFile\AviFile.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="AviDemo.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="AviDemo.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AviDemo" Source="AviDemo.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="AviFile" Source="..\AviFile\AviFile.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

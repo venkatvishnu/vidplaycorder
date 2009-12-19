@@ -1,0 +1,5 @@
+C:\Documents and Settings\moi\Bureau\AviFile\bin\Debug\AviFile.dll
+C:\Documents and Settings\moi\Bureau\AviFile\bin\Debug\AviFile.pdb
+C:\Documents and Settings\moi\Bureau\AviFile\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\moi\Bureau\AviFile\obj\Debug\AviFile.dll
+C:\Documents and Settings\moi\Bureau\AviFile\obj\Debug\AviFile.pdb
