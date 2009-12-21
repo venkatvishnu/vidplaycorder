@@ -31,7 +31,7 @@ namespace VideoPlayer.State
             ChangeState(_playerStateController.PauseReccordingState);
         }
 
-        public override void Record()
+        public override void Record(string _outputFile)
         {
             _timer.Stop();
             ChangeState(_playerStateController.PlayingState);

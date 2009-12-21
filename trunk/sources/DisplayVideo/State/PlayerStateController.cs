@@ -56,6 +56,9 @@ namespace VideoPlayer.State
             set { Traitement.Instance.Brillance = value; }
         }
 
+
+
+      
         /// <summary>
         /// Tableau d'entier représentant la matrice de convolution pour le traitement
         /// </summary>
@@ -100,9 +103,9 @@ namespace VideoPlayer.State
             CurrentState.Rewind();
         }
 
-        public void Record()
+        public void Record(string _outputFile)
         {
-            CurrentState.Record();
+            CurrentState.Record(_outputFile);
         }
 
         public bool IsPlaying

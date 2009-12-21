@@ -9,7 +9,7 @@
         void Stop();
         void Forward();
         void Rewind();
-        void Record();
+        void Record(string _outputFile);
         void Begin();
 
         bool IsPlaying { get; }

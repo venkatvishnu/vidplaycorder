@@ -16,6 +16,7 @@ namespace VideoPlayer
         private delegate void RefreshImageDelegate(Bitmap image);
 
         private PlayerStateController _controller;
+        private string _outputFile = null;
 
         public DisplayVideo()
         {
@@ -129,8 +130,33 @@ namespace VideoPlayer
 
         private void reccordButton_Click(object sender, EventArgs e)
         {
-            _controller.Record();
+            if (_outputFile == null)
+            {
+                saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    _outputFile = saveFileDialog1.FileName;
+                }
+            }
+
+            _controller.Record(_outputFile);
             RefreshInterface();
+        }
+
+        private void DisplayVideo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sélectionnerFichierDenregistrementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _outputFile = saveFileDialog1.FileName;
+            }
         }
     }
 }

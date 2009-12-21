@@ -18,14 +18,14 @@ namespace VideoReccorder
         {
         }
       
-        public void StartRecording(string filename)
+        public void StartRecording()
         {
             Bitmap bitmap = (Bitmap)Image.FromFile(filename);
 
             //TODO : lire par MMF le nom du fichier de sorti
             //TODO : lire par MMF les fichier bitmap modifié
-            //bitmap.loadFromStream
-            aviManager = new AviManager(filename + ".avi", false);
+           // bitmap.loadFromStream
+            aviManager = new AviManager(filename, false);
             VideoStream aviStream =  aviManager.AddVideoStream(true, 2, bitmap); //bitmap étant la première image, elle sert a sizer le format du vidéo de sorti
           
             int count = 0;

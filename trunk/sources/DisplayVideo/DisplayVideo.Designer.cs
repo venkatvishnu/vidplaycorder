@@ -48,14 +48,15 @@
             this.paramètresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.framePictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.reccordButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.rewindButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
-            this.reccordButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.framePictureBox = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,6 +113,7 @@
             this.sélectionnerFichierDenregistrementToolStripMenuItem.Name = "sélectionnerFichierDenregistrementToolStripMenuItem";
             this.sélectionnerFichierDenregistrementToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.sélectionnerFichierDenregistrementToolStripMenuItem.Text = "Créer le fichier d\'enregistrement";
+            this.sélectionnerFichierDenregistrementToolStripMenuItem.Click += new System.EventHandler(this.sélectionnerFichierDenregistrementToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -211,7 +213,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 57);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -229,21 +231,28 @@
             this.panel1.Size = new System.Drawing.Size(397, 51);
             this.panel1.TabIndex = 0;
             // 
-            // openFileDialog1
+            // button1
             // 
-            this.openFileDialog1.DefaultExt = "avi";
-            this.openFileDialog1.Title = "Fichier vidéo";
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(408, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // framePictureBox
+            // reccordButton
             // 
-            this.framePictureBox.BackColor = System.Drawing.Color.Black;
-            this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
-            this.framePictureBox.Name = "framePictureBox";
-            this.framePictureBox.Size = new System.Drawing.Size(720, 433);
-            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.framePictureBox.TabIndex = 0;
-            this.framePictureBox.TabStop = false;
+            this.reccordButton.BackColor = System.Drawing.SystemColors.Control;
+            this.reccordButton.FlatAppearance.BorderSize = 0;
+            this.reccordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
+            this.reccordButton.Location = new System.Drawing.Point(308, 0);
+            this.reccordButton.Name = "reccordButton";
+            this.reccordButton.Size = new System.Drawing.Size(52, 52);
+            this.reccordButton.TabIndex = 4;
+            this.reccordButton.UseVisualStyleBackColor = false;
+            this.reccordButton.Click += new System.EventHandler(this.reccordButton_Click);
             // 
             // stopButton
             // 
@@ -297,28 +306,21 @@
             this.forwardButton.UseVisualStyleBackColor = false;
             this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
             // 
-            // reccordButton
+            // openFileDialog1
             // 
-            this.reccordButton.BackColor = System.Drawing.SystemColors.Control;
-            this.reccordButton.FlatAppearance.BorderSize = 0;
-            this.reccordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
-            this.reccordButton.Location = new System.Drawing.Point(308, 0);
-            this.reccordButton.Name = "reccordButton";
-            this.reccordButton.Size = new System.Drawing.Size(52, 52);
-            this.reccordButton.TabIndex = 4;
-            this.reccordButton.UseVisualStyleBackColor = false;
-            this.reccordButton.Click += new System.EventHandler(this.reccordButton_Click);
+            this.openFileDialog1.DefaultExt = "avi";
+            this.openFileDialog1.Title = "Fichier vidéo";
             // 
-            // button1
+            // framePictureBox
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(408, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.framePictureBox.BackColor = System.Drawing.Color.Black;
+            this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
+            this.framePictureBox.Name = "framePictureBox";
+            this.framePictureBox.Size = new System.Drawing.Size(720, 433);
+            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.framePictureBox.TabIndex = 0;
+            this.framePictureBox.TabStop = false;
             // 
             // DisplayVideo
             // 
@@ -331,6 +333,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "DisplayVideo";
+            this.Load += new System.EventHandler(this.DisplayVideo_Load);
             this.Shown += new System.EventHandler(this.DisplayVideo_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisplayVideo_FormClosing);
             this.menuStrip1.ResumeLayout(false);
@@ -373,6 +376,7 @@
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button reccordButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 
     }
 }
