@@ -39,8 +39,26 @@ namespace VideoPlayer.State
 
         public override void Begin()
         {
+            _timer.Resolution = 1;
+            _timer.Period = (int)(1000 / _videoSource.FrameRate);
             base.Begin();
             _videoSource.Step = 1;
+        }
+
+        public override bool IsPlaying
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool IsReccording
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace VideoPlayer
 {
     public class VideoSource
     {
-        private const int BuferMaxSize = 2*30;
+        private const int BuferMaxSize = 60;
         
         private readonly Queue<Bitmap> _frameBuffer = new Queue<Bitmap>();
 
@@ -67,6 +67,28 @@ namespace VideoPlayer
             }
         }
 
+        public bool BeginOfFile
+        {
+            get
+            {
+                lock (this)
+                {
+                    return _frameBuffer.Count == 0 && _currentFrame <= 0;
+                }
+            }
+        }
+
+        public bool EndOfFile
+        {
+            get
+            {
+                lock (this)
+                {
+                    return _frameBuffer.Count == 0 && _currentFrame > _videoStream.CountFrames;
+                }
+            }
+        }
+
         public int Step
         {
             get
@@ -119,8 +141,9 @@ namespace VideoPlayer
             if (_threadFillBuffer == null)
             {
                 _threadFillBuffer = new Thread(this.FillBuffer);
-                _threadFillBuffer.Start();
+                _threadFillBuffer.Priority = ThreadPriority.Highest;
             }
+            _threadFillBuffer.Start();
 
         }
 
@@ -135,7 +158,7 @@ namespace VideoPlayer
 
                 _videoStream.GetFrameClose();
                 _aviManager.Close();
-
+                
                 _frameBuffer.Clear();
             }
         }
@@ -159,7 +182,9 @@ namespace VideoPlayer
                     
                     if (_currentFrame >= 0 && _currentFrame < FrameCount)
                     {
-                        _frameBuffer.Enqueue(_videoStream.GetBitmap(_currentFrame));
+                        var bitmap = _videoStream.GetBitmap(_currentFrame);
+                        //Traitement.Instance.Traiter(bitmap);
+                        _frameBuffer.Enqueue(bitmap);
                         _currentFrame += Step;
                         
                     }

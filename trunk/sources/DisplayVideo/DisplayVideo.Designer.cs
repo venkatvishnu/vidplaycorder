@@ -46,15 +46,16 @@
             this.débutArrêtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traitementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paramètresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.framePictureBox = new System.Windows.Forms.PictureBox();
+            this.stopButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.rewindButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.reccordButton = new System.Windows.Forms.Button();
-            this.framePictureBox = new System.Windows.Forms.PictureBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,8 +71,8 @@
             this.traitementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(750, 24);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Size = new System.Drawing.Size(720, 24);
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fichierToolStripMenuItem
@@ -160,12 +161,14 @@
             this.rembobinToolStripMenuItem.Name = "rembobinToolStripMenuItem";
             this.rembobinToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.rembobinToolStripMenuItem.Text = "Rembobinage";
+            this.rembobinToolStripMenuItem.Click += new System.EventHandler(this.rewindButton_Click);
             // 
             // avanceRapideToolStripMenuItem
             // 
             this.avanceRapideToolStripMenuItem.Name = "avanceRapideToolStripMenuItem";
             this.avanceRapideToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.avanceRapideToolStripMenuItem.Text = "Avance rapide";
+            this.avanceRapideToolStripMenuItem.Click += new System.EventHandler(this.rewindButton_Click);
             // 
             // enregistrementToolStripMenuItem
             // 
@@ -196,44 +199,6 @@
             this.paramètresToolStripMenuItem.Text = "Paramètres";
             this.paramètresToolStripMenuItem.Click += new System.EventHandler(this.paramètresToolStripMenuItem_Click);
             // 
-            // playButton
-            // 
-            this.playButton.Image = global::VideoPlayer.Properties.Resources.play;
-            this.playButton.Location = new System.Drawing.Point(172, 8);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(52, 52);
-            this.playButton.TabIndex = 2;
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.lecturePauseToolStripMenuItem_Click);
-            // 
-            // rewindButton
-            // 
-            this.rewindButton.Image = global::VideoPlayer.Properties.Resources.rewind;
-            this.rewindButton.Location = new System.Drawing.Point(104, 8);
-            this.rewindButton.Name = "rewindButton";
-            this.rewindButton.Size = new System.Drawing.Size(52, 52);
-            this.rewindButton.TabIndex = 3;
-            this.rewindButton.UseVisualStyleBackColor = true;
-            // 
-            // forwardButton
-            // 
-            this.forwardButton.Image = global::VideoPlayer.Properties.Resources.fast_forward;
-            this.forwardButton.Location = new System.Drawing.Point(240, 8);
-            this.forwardButton.Name = "forwardButton";
-            this.forwardButton.Size = new System.Drawing.Size(52, 52);
-            this.forwardButton.TabIndex = 4;
-            this.forwardButton.UseVisualStyleBackColor = true;
-            // 
-            // stopButton
-            // 
-            this.stopButton.Image = global::VideoPlayer.Properties.Resources.stop;
-            this.stopButton.Location = new System.Drawing.Point(36, 8);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(52, 52);
-            this.stopButton.TabIndex = 5;
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
@@ -242,65 +207,132 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 478);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 457);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(750, 75);
-            this.tableLayoutPanel1.TabIndex = 8;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 57);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.reccordButton);
             this.panel1.Controls.Add(this.stopButton);
             this.panel1.Controls.Add(this.playButton);
-            this.panel1.Controls.Add(this.reccordButton);
             this.panel1.Controls.Add(this.rewindButton);
             this.panel1.Controls.Add(this.forwardButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(176, 3);
+            this.panel1.Location = new System.Drawing.Point(161, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(397, 69);
-            this.panel1.TabIndex = 9;
-            // 
-            // reccordButton
-            // 
-            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
-            this.reccordButton.Location = new System.Drawing.Point(308, 8);
-            this.reccordButton.Name = "reccordButton";
-            this.reccordButton.Size = new System.Drawing.Size(52, 52);
-            this.reccordButton.TabIndex = 6;
-            this.reccordButton.UseVisualStyleBackColor = true;
-            // 
-            // framePictureBox
-            // 
-            this.framePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.framePictureBox.Image = global::VideoPlayer.Properties.Resources._00763808_photo_extrait_de_les_simpson_le_film;
-            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
-            this.framePictureBox.Name = "framePictureBox";
-            this.framePictureBox.Size = new System.Drawing.Size(750, 454);
-            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.framePictureBox.TabIndex = 0;
-            this.framePictureBox.TabStop = false;
+            this.panel1.Size = new System.Drawing.Size(397, 51);
+            this.panel1.TabIndex = 0;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.DefaultExt = "avi";
             this.openFileDialog1.Title = "Fichier vidéo";
             // 
+            // framePictureBox
+            // 
+            this.framePictureBox.BackColor = System.Drawing.Color.Black;
+            this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
+            this.framePictureBox.Name = "framePictureBox";
+            this.framePictureBox.Size = new System.Drawing.Size(720, 433);
+            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.framePictureBox.TabIndex = 0;
+            this.framePictureBox.TabStop = false;
+            // 
+            // stopButton
+            // 
+            this.stopButton.BackColor = System.Drawing.SystemColors.Control;
+            this.stopButton.FlatAppearance.BorderSize = 0;
+            this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stopButton.Image = global::VideoPlayer.Properties.Resources.stop;
+            this.stopButton.Location = new System.Drawing.Point(36, 0);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(52, 52);
+            this.stopButton.TabIndex = 0;
+            this.stopButton.UseVisualStyleBackColor = false;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // playButton
+            // 
+            this.playButton.BackColor = System.Drawing.SystemColors.Control;
+            this.playButton.FlatAppearance.BorderSize = 0;
+            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playButton.Image = global::VideoPlayer.Properties.Resources.play;
+            this.playButton.Location = new System.Drawing.Point(172, 0);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(52, 52);
+            this.playButton.TabIndex = 2;
+            this.playButton.UseVisualStyleBackColor = false;
+            this.playButton.Click += new System.EventHandler(this.lecturePauseToolStripMenuItem_Click);
+            // 
+            // rewindButton
+            // 
+            this.rewindButton.BackColor = System.Drawing.SystemColors.Control;
+            this.rewindButton.FlatAppearance.BorderSize = 0;
+            this.rewindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rewindButton.Image = global::VideoPlayer.Properties.Resources.rewind;
+            this.rewindButton.Location = new System.Drawing.Point(104, 0);
+            this.rewindButton.Name = "rewindButton";
+            this.rewindButton.Size = new System.Drawing.Size(52, 52);
+            this.rewindButton.TabIndex = 1;
+            this.rewindButton.UseVisualStyleBackColor = false;
+            this.rewindButton.Click += new System.EventHandler(this.rewindButton_Click);
+            // 
+            // forwardButton
+            // 
+            this.forwardButton.BackColor = System.Drawing.SystemColors.Control;
+            this.forwardButton.FlatAppearance.BorderSize = 0;
+            this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forwardButton.Image = global::VideoPlayer.Properties.Resources.fast_forward;
+            this.forwardButton.Location = new System.Drawing.Point(240, 0);
+            this.forwardButton.Name = "forwardButton";
+            this.forwardButton.Size = new System.Drawing.Size(52, 52);
+            this.forwardButton.TabIndex = 3;
+            this.forwardButton.UseVisualStyleBackColor = false;
+            this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
+            // 
+            // reccordButton
+            // 
+            this.reccordButton.BackColor = System.Drawing.SystemColors.Control;
+            this.reccordButton.FlatAppearance.BorderSize = 0;
+            this.reccordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
+            this.reccordButton.Location = new System.Drawing.Point(308, 0);
+            this.reccordButton.Name = "reccordButton";
+            this.reccordButton.Size = new System.Drawing.Size(52, 52);
+            this.reccordButton.TabIndex = 4;
+            this.reccordButton.UseVisualStyleBackColor = false;
+            this.reccordButton.Click += new System.EventHandler(this.reccordButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(408, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // DisplayVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 553);
+            this.ClientSize = new System.Drawing.Size(720, 514);
             this.Controls.Add(this.framePictureBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "DisplayVideo";
-            this.Text = "nomVideo";
             this.Shown += new System.EventHandler(this.DisplayVideo_Shown);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisplayVideo_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -333,13 +365,14 @@
         private System.Windows.Forms.Button rewindButton;
         private System.Windows.Forms.Button forwardButton;
         private System.Windows.Forms.Button stopButton;
-        private System.Windows.Forms.Button reccordButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem sélectionnerFichierDenregistrementToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem paramètresToolStripMenuItem;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button reccordButton;
+        private System.Windows.Forms.Button button1;
 
     }
 }

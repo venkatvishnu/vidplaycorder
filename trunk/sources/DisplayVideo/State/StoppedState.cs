@@ -13,6 +13,7 @@ namespace VideoPlayer.State
 
         public override void Begin()
         {
+            _videoSource.Step = 1;
             _videoSource.Reset();
         }
     }
