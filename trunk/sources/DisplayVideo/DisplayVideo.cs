@@ -32,22 +32,12 @@ namespace VideoPlayer
             this.Close();
         }
 
-        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-
-            }                
-        }
-
         private void RefreshImage(Bitmap image)
         {
             framePictureBox.Image = image;
+            framePictureBox.Refresh();
         }
-
         
-        
-
         public void UpdateFrame(Bitmap frame)
         {
             RefreshImageDelegate del = RefreshImage;
@@ -60,6 +50,27 @@ namespace VideoPlayer
             _controller = new PlayerStateController(this);
         }
 
+        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _controller.Open(openFileDialog1.FileName);
+            }
+        }
 
+        private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.Close();
+        }
+
+        private void lecturePauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.Play();
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            _controller.Stop();
+        }
     }
 }

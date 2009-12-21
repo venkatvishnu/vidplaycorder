@@ -70,7 +70,7 @@
             this.traitementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(741, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(750, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -99,6 +99,7 @@
             this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
             this.fermerToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.fermerToolStripMenuItem.Text = "Fermer";
+            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -140,12 +141,14 @@
             this.lecturePauseToolStripMenuItem.Name = "lecturePauseToolStripMenuItem";
             this.lecturePauseToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.lecturePauseToolStripMenuItem.Text = "Lecture/Pause";
+            this.lecturePauseToolStripMenuItem.Click += new System.EventHandler(this.lecturePauseToolStripMenuItem_Click);
             // 
             // arrêterToolStripMenuItem
             // 
             this.arrêterToolStripMenuItem.Name = "arrêterToolStripMenuItem";
             this.arrêterToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.arrêterToolStripMenuItem.Text = "Arrêter";
+            this.arrêterToolStripMenuItem.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -201,6 +204,7 @@
             this.playButton.Size = new System.Drawing.Size(52, 52);
             this.playButton.TabIndex = 2;
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.lecturePauseToolStripMenuItem_Click);
             // 
             // rewindButton
             // 
@@ -228,6 +232,7 @@
             this.stopButton.Size = new System.Drawing.Size(52, 52);
             this.stopButton.TabIndex = 5;
             this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -237,12 +242,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 424);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 478);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 75);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(750, 75);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel1
@@ -253,7 +258,7 @@
             this.panel1.Controls.Add(this.rewindButton);
             this.panel1.Controls.Add(this.forwardButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(172, 3);
+            this.panel1.Location = new System.Drawing.Point(176, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(397, 69);
             this.panel1.TabIndex = 9;
@@ -269,24 +274,26 @@
             // 
             // framePictureBox
             // 
+            this.framePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.framePictureBox.Image = global::VideoPlayer.Properties.Resources._00763808_photo_extrait_de_les_simpson_le_film;
             this.framePictureBox.Location = new System.Drawing.Point(0, 24);
             this.framePictureBox.Name = "framePictureBox";
-            this.framePictureBox.Size = new System.Drawing.Size(741, 400);
-            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.framePictureBox.Size = new System.Drawing.Size(750, 454);
+            this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.framePictureBox.TabIndex = 0;
             this.framePictureBox.TabStop = false;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.DefaultExt = "avi";
+            this.openFileDialog1.Title = "Fichier vidéo";
             // 
             // DisplayVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 499);
+            this.ClientSize = new System.Drawing.Size(750, 553);
             this.Controls.Add(this.framePictureBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
