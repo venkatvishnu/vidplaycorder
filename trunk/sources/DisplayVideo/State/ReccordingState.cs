@@ -10,7 +10,11 @@ namespace VideoPlayer.State
 
         public override void DoAction()
         {
-            _frameDisplay.UpdateFrame(_videoSource.NextFrame());
+            var frame = _videoSource.NextFrame();
+
+            _frameDisplay.UpdateFrame(frame);
+
+            //TODO: Envoyé l'image au reccorder
         }
 
         public override void Forward()
