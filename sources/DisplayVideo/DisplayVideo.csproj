@@ -33,6 +33,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AviFile, Version=1.0.3641.26299, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AviFile.dll</HintPath>
+    </Reference>
     <Reference Include="FrameGrabber, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\FrameGrabber.dll</HintPath>
@@ -60,8 +64,13 @@
       <DependentUpon>EditionParametreTraitement.cs</DependentUpon>
     </Compile>
     <Compile Include="Filtres.cs" />
-    <Compile Include="IFrameDisplay.cs" />
+    <Compile Include="State\ForwardingState.cs" />
+    <Compile Include="State\IFrameDisplay.cs" />
+    <Compile Include="State\BaseState.cs" />
+    <Compile Include="State\InitialState.cs" />
     <Compile Include="State\IPlayerState.cs" />
+    <Compile Include="State\PausedState.cs" />
+    <Compile Include="State\PauseReccordingState.cs" />
     <Compile Include="State\PlayerStateController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +101,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="MultimediaTimer.cs" />
+    <Compile Include="State\PlayingState.cs" />
+    <Compile Include="State\ReccordingState.cs" />
+    <Compile Include="State\RewindingState.cs" />
+    <Compile Include="State\StoppedState.cs" />
+    <Compile Include="State\TimerState.cs" />
     <Compile Include="Traitement.cs" />
     <Compile Include="VideoSource.cs" />
   </ItemGroup>

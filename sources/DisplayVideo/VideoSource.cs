@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
-
-
-using User.DirectShow;
+using AviFile;
 
 namespace VideoPlayer
 {
-    class VideoSource
+    public class VideoSource
     {
         private const int BuferMaxSize = 2*30;
         
@@ -19,8 +17,11 @@ namespace VideoPlayer
         
         private int _currentFrame = 0;
         private int _step = 1;
-        private readonly FrameGrabber _frameGrabber = new FrameGrabber();
-        
+
+
+        private AviManager _aviManager;
+        private VideoStream _videoStream;
+
         /// <summary>
         /// Récupère le frame courant
         /// </summary>
@@ -90,26 +91,37 @@ namespace VideoPlayer
             {
                 lock (this)
                 {
-                    return _frameGrabber.FrameCount;
+                    return _videoStream.CountFrames;
                 }
+            }
+        }
+
+        public double FrameRate
+        {
+            get
+            {
+                return _videoStream.FrameRate;
             }
         }
 
         public void Open(string file)
         {
-            Close();
-
             lock (this)
             {
-                _frameGrabber.FileName = file;
+                _aviManager = new AviManager(file, true);
+                _videoStream = _aviManager.GetVideoStream();
 
+                _videoStream.GetFrameOpen();
                 _currentFrame = 0;
                 _frameBuffer.Clear();
             }
 
-            _threadFillBuffer = new Thread(this.FillBuffer);
+            if (_threadFillBuffer == null)
+            {
+                _threadFillBuffer = new Thread(this.FillBuffer);
                 _threadFillBuffer.Start();
-            
+            }
+
         }
 
         public void Close()
@@ -121,7 +133,19 @@ namespace VideoPlayer
                     _threadFillBuffer.Abort();
                 }
 
+                _videoStream.GetFrameClose();
+                _aviManager.Close();
+
                 _frameBuffer.Clear();
+            }
+        }
+
+        public void Reset()
+        {
+            lock (this)
+            {
+                _frameBuffer.Clear();
+                _currentFrame = 0;
             }
         }
 
@@ -133,10 +157,9 @@ namespace VideoPlayer
                 if (_frameBuffer.Count <= BuferMaxSize)
                 {
                     
-                    if (_currentFrame > 0 && _currentFrame < FrameCount)
+                    if (_currentFrame >= 0 && _currentFrame < FrameCount)
                     {
-                        
-                        _frameBuffer.Enqueue(_frameGrabber.GetImage(_currentFrame));
+                        _frameBuffer.Enqueue(_videoStream.GetBitmap(_currentFrame));
                         _currentFrame += Step;
                         
                     }

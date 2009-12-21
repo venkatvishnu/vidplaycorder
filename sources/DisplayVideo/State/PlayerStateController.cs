@@ -8,16 +8,20 @@ namespace VideoPlayer.State
 {
     class PlayerStateController
     {
-        private readonly IFrameDisplay _frameDisplay;
         private VideoSource _source;
 
         public PlayerStateController(IFrameDisplay frameDisplay)
         {
-            _frameDisplay = frameDisplay;
             _source = new VideoSource();
 
-            var t = new MultimediaTimer {Period = 1000/30, Resolution = 1000/30};
-            t.Start(TimerCallback);
+            CurrentState = InitialState = new InitialState(this, _source, frameDisplay);
+            StoppedState = new StoppedState(this, _source, frameDisplay);
+            PlayingState = new PlayingState(this, _source, frameDisplay);
+            PausedState = new PausedState(this, _source, frameDisplay);
+            ReccordingState = new ReccordingState(this, _source, frameDisplay);
+            PauseReccordingState = new PauseReccordingState(this, _source, frameDisplay);
+            RewindingState = new RewindingState(this, _source, frameDisplay);
+            ForwardingState = new ForwardingState(this, _source, frameDisplay);
         }
 
         public IPlayerState InitialState{ get;private set; }
@@ -27,7 +31,7 @@ namespace VideoPlayer.State
         public IPlayerState ReccordingState{ get;private set; }
         public IPlayerState PauseReccordingState{ get;private set; }
         public IPlayerState RewindingState{ get;private set; }
-        public IPlayerState ForwardingingState{ get;private set; }
+        public IPlayerState ForwardingState{ get;private set; }
 
 
         /// <summary>
@@ -76,6 +80,11 @@ namespace VideoPlayer.State
             CurrentState.Play();
         }
 
+        public void Pause()
+        {
+            CurrentState.Pause();
+        }
+
         public void Stop()
         {
             CurrentState.Stop();
@@ -94,11 +103,6 @@ namespace VideoPlayer.State
         public void Record()
         {
             CurrentState.Record();
-        }
-
-        private void TimerCallback(int id, int msg, int user, int param1, int param2)
-        {
-            _frameDisplay.UpdateFrame(_source.NextFrame());
         }
     }
 }
