@@ -25,5 +25,14 @@ namespace VideoPlayer.State
         {
             ChangeState(_playerStateController.PauseReccordingState);
         }
+
+        public override bool IsPaused
+        {
+            get
+            {
+                return true;
+            }
+        }
+
     }
 }

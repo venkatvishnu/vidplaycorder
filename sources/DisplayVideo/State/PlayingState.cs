@@ -11,7 +11,15 @@ namespace VideoPlayer.State
 
         public override void DoAction()
         {
-            _frameDisplay.UpdateFrame(_videoSource.NextFrame());
+            if (!_videoSource.EndOfFile)
+            {
+                _frameDisplay.UpdateFrame(_videoSource.NextFrame());
+            }
+            else
+            {
+                _timer.Stop();
+                ChangeState(_playerStateController.StoppedState);
+            }
         }
 
         public override void Forward()
@@ -44,6 +52,14 @@ namespace VideoPlayer.State
             _timer.Period = (int)(1000 / _videoSource.FrameRate);
             base.Begin();
             _videoSource.Step = 1;
+        }
+
+        public override bool IsPlaying
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }

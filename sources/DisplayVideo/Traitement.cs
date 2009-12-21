@@ -29,20 +29,65 @@ namespace VideoPlayer
             Convolution = new [] {0,0,0,0,1,0,0,0,0};
         }
 
-        public int Brillance { get; set; }
-        public double Contraste { get; set; }
-        public int[] Convolution { get; set; }
+        private object _brillanceSyn = new object();
+        private int _brillance;
+        public int Brillance
+        {
+            get
+            {
+                lock (_brillanceSyn)
+                    return _brillance;
+            }
+            set
+            {
+                lock (_brillanceSyn)
+                    _brillance = value;
+            }
+        }
+
+        private object _contrasteSyn = new object();
+        private double _contraste;
+        public double Contraste
+        {
+            get
+            {
+                lock (_contrasteSyn)
+                    return _contraste;
+            }
+            set
+            {
+                lock (_contrasteSyn)
+                    _contraste = value;
+            }
+        }
+
+        private object _convolutionSyn = new object();
+        private int[] _convolution;
+        public int[] Convolution
+        {
+            get
+            {
+                lock(_convolutionSyn)
+                    return _convolution;
+            }
+            set
+            {
+                lock (_convolutionSyn)
+                    _convolution = value;
+            }
+        }
 
         public void Traiter(Bitmap bitmap)
         {
             Matrice m;
             m.tableau = Convolution;
             m.facteur = 1;
-            m.offset = 127;
+            m.offset = 0;
 
-            CalculMatrice(bitmap,m);
+            CalculMatrice(bitmap,m,Brillance,Contraste);
         }
-        private static void CalculMatrice(Bitmap bitmap, Matrice m)
+
+        private static void CalculMatrice(Bitmap bitmap, Matrice m, int brillance, double contraste)
         {
 
             if (bitmap.PixelFormat != PixelFormat.Format32bppArgb)
@@ -143,8 +188,13 @@ namespace VideoPlayer
                         b = (b >> 8) + moffset;
                         g = (g >> 8) + moffset;
 
+                        //Application de la contraste et de la brillance
+                        r = (int)((r + brillance) * contraste);
+                        b = (int)((b + brillance) * contraste);
+                        g = (int)((g + brillance) * contraste);
+
                         //bornage des composantes
-                        r = (r < 0) ? 0 : (r > 255) ? 255 : r;
+                        r = (r < 0) ? 0 : (r > 255)? 255 : r;
                         b = (b < 0) ? 0 : (b > 255) ? 255 : b;
                         g = (g < 0) ? 0 : (g > 255) ? 255 : g;
 

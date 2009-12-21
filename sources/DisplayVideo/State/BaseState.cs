@@ -61,6 +61,27 @@ namespace VideoPlayer.State
         {
         }
 
+        public virtual bool IsPlaying
+        {
+            get { return false; }
+        }
+
+        public virtual bool IsPaused
+        {
+            get { return false; }
+        }
+
+        public virtual bool IsReccording
+        {
+            get { return false; }
+        }
+
+        public virtual bool FileOpen
+        {
+            get { return true; }
+        }
+
+
         protected void ChangeState(IPlayerState state)
         {
             _playerStateController.CurrentState = state;

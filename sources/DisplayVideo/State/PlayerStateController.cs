@@ -104,5 +104,22 @@ namespace VideoPlayer.State
         {
             CurrentState.Record();
         }
+
+        public bool IsPlaying
+        {
+            get { return CurrentState.IsPlaying; }
+        }
+        public bool IsPaused
+        {
+            get{ return CurrentState.IsPaused;}
+        }
+        public bool IsReccording
+        {
+            get { return CurrentState.IsReccording; }
+        }
+        public bool FileOpen
+        {
+            get{ return CurrentState.FileOpen;}
+        }
     }
 }
