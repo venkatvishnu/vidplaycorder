@@ -52,7 +52,7 @@ namespace VideoPlayer.State
             throw new NotSupportedException();
         }
 
-        public virtual void Record()
+        public virtual void Record(string _outputFile)
         {
             throw new NotSupportedException();
         }
