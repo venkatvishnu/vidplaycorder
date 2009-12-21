@@ -1,0 +1,236 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{002B0EF1-2373-46F9-BB22-64C772764C1F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>ThreadMessaging</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ThreadMessaging</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Messaging">
+      <Name>System.Messaging</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Barrier\IBarrier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Barrier\IRendezVous.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Barrier\ProcessRendezVous.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Barrier\ThreadBarrier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Barrier\ThreadRendezVous.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Channels\IChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Channels\MsmqChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Channels\ProcessChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Channels\ThreadChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\ChannelDemultiplexer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\ChannelEventGateway.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\ChannelFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\ChannelForwarder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\ChannelMultiplexer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlowControl\Envelope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MailBoxes\IMailBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MailBoxes\MsmqMailbox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MailBoxes\ProcessMailbox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MailBoxes\ThreadMailbox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappedArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappedArrayFailedException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappedFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappedFileView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappedQueue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MemoryMapping\MemoryMappingFailedException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reliability\DumpContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reliability\IReliability.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reliability\ProcessReliability.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reliability\ThreadReliability.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Semaphore\ISemaphore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Semaphore\ProcessSemaphore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Semaphore\SemaphoreFailedException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Semaphore\SemaphoreLimitReachedException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Semaphore\ThreadSemaphore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Server\Daemon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Server\RequestResponse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Server\Session.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Server\Sessions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ThreadControl\IRunnable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ThreadControl\MultiRunnable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ThreadControl\SingleRunnable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32\NTAdvanced.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32\NTKernel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="License.txt" />
+    <None Include="MailBoxes\Kopie von ProcessMailbox.cs">
+      <SubType>Code</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
