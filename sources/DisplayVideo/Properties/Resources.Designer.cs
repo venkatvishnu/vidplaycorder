@@ -60,6 +60,13 @@ namespace VideoPlayer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap enregistrementEnCours {
+            get {
+                object obj = ResourceManager.GetObject("enregistrementEnCours", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap fast_forward {
             get {
                 object obj = ResourceManager.GetObject("fast_forward", resourceCulture);

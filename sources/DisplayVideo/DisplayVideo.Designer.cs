@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayVideo));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +55,14 @@
             this.playButton = new System.Windows.Forms.Button();
             this.rewindButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
+            this.enregistrementEnCoursPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.framePictureBox = new System.Windows.Forms.PictureBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enregistrementEnCoursPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,7 +173,7 @@
             this.avanceRapideToolStripMenuItem.Name = "avanceRapideToolStripMenuItem";
             this.avanceRapideToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.avanceRapideToolStripMenuItem.Text = "Avance rapide";
-            this.avanceRapideToolStripMenuItem.Click += new System.EventHandler(this.rewindButton_Click);
+            this.avanceRapideToolStripMenuItem.Click += new System.EventHandler(this.forwardButton_Click);
             // 
             // enregistrementToolStripMenuItem
             // 
@@ -185,6 +188,7 @@
             this.débutArrêtToolStripMenuItem.Name = "débutArrêtToolStripMenuItem";
             this.débutArrêtToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.débutArrêtToolStripMenuItem.Text = "Début/Arrêt";
+            this.débutArrêtToolStripMenuItem.Click += new System.EventHandler(this.reccordButton_Click);
             // 
             // traitementToolStripMenuItem
             // 
@@ -205,16 +209,17 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 403F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.enregistrementEnCoursPictureBox, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 457);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 448);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 57);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 66);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -226,15 +231,15 @@
             this.panel1.Controls.Add(this.rewindButton);
             this.panel1.Controls.Add(this.forwardButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(161, 3);
+            this.panel1.Location = new System.Drawing.Point(213, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(397, 51);
+            this.panel1.Size = new System.Drawing.Size(294, 60);
             this.panel1.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(408, 24);
+            this.button1.Location = new System.Drawing.Point(355, 33);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -247,7 +252,7 @@
             this.reccordButton.FlatAppearance.BorderSize = 0;
             this.reccordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reccordButton.Image = global::VideoPlayer.Properties.Resources.record;
-            this.reccordButton.Location = new System.Drawing.Point(308, 0);
+            this.reccordButton.Location = new System.Drawing.Point(225, 4);
             this.reccordButton.Name = "reccordButton";
             this.reccordButton.Size = new System.Drawing.Size(52, 52);
             this.reccordButton.TabIndex = 4;
@@ -260,7 +265,7 @@
             this.stopButton.FlatAppearance.BorderSize = 0;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopButton.Image = global::VideoPlayer.Properties.Resources.stop;
-            this.stopButton.Location = new System.Drawing.Point(36, 0);
+            this.stopButton.Location = new System.Drawing.Point(17, 4);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(52, 52);
             this.stopButton.TabIndex = 0;
@@ -273,7 +278,7 @@
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Image = global::VideoPlayer.Properties.Resources.play;
-            this.playButton.Location = new System.Drawing.Point(172, 0);
+            this.playButton.Location = new System.Drawing.Point(121, 4);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(52, 52);
             this.playButton.TabIndex = 2;
@@ -286,7 +291,7 @@
             this.rewindButton.FlatAppearance.BorderSize = 0;
             this.rewindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rewindButton.Image = global::VideoPlayer.Properties.Resources.rewind;
-            this.rewindButton.Location = new System.Drawing.Point(104, 0);
+            this.rewindButton.Location = new System.Drawing.Point(69, 4);
             this.rewindButton.Name = "rewindButton";
             this.rewindButton.Size = new System.Drawing.Size(52, 52);
             this.rewindButton.TabIndex = 1;
@@ -299,12 +304,22 @@
             this.forwardButton.FlatAppearance.BorderSize = 0;
             this.forwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.forwardButton.Image = global::VideoPlayer.Properties.Resources.fast_forward;
-            this.forwardButton.Location = new System.Drawing.Point(240, 0);
+            this.forwardButton.Location = new System.Drawing.Point(173, 4);
             this.forwardButton.Name = "forwardButton";
             this.forwardButton.Size = new System.Drawing.Size(52, 52);
             this.forwardButton.TabIndex = 3;
             this.forwardButton.UseVisualStyleBackColor = false;
             this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
+            // 
+            // enregistrementEnCoursPictureBox
+            // 
+            this.enregistrementEnCoursPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("enregistrementEnCoursPictureBox.Image")));
+            this.enregistrementEnCoursPictureBox.Location = new System.Drawing.Point(513, 3);
+            this.enregistrementEnCoursPictureBox.Name = "enregistrementEnCoursPictureBox";
+            this.enregistrementEnCoursPictureBox.Size = new System.Drawing.Size(199, 60);
+            this.enregistrementEnCoursPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.enregistrementEnCoursPictureBox.TabIndex = 1;
+            this.enregistrementEnCoursPictureBox.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -317,7 +332,7 @@
             this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.framePictureBox.Location = new System.Drawing.Point(0, 24);
             this.framePictureBox.Name = "framePictureBox";
-            this.framePictureBox.Size = new System.Drawing.Size(720, 433);
+            this.framePictureBox.Size = new System.Drawing.Size(720, 424);
             this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.framePictureBox.TabIndex = 0;
             this.framePictureBox.TabStop = false;
@@ -340,6 +355,7 @@
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.enregistrementEnCoursPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -376,8 +392,8 @@
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button reccordButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox enregistrementEnCoursPictureBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-
     }
 }
 

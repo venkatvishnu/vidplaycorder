@@ -20,6 +20,7 @@ namespace VideoReccorder
       
         public void StartRecording()
         {
+            string filename = "";
             Bitmap bitmap = (Bitmap)Image.FromFile(filename);
 
             //TODO : lire par MMF le nom du fichier de sorti

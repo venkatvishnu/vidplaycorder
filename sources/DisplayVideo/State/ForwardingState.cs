@@ -60,5 +60,13 @@ namespace VideoPlayer.State
                 return true;
             }
         }
+
+        public override bool IsFastPlaying
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }
