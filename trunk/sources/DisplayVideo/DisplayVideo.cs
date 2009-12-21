@@ -21,6 +21,7 @@ namespace VideoPlayer
         public DisplayVideo()
         {
             InitializeComponent();
+            
         }
 
         private void paramètresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,18 +71,20 @@ namespace VideoPlayer
             }
             else
             {
-                if(_controller.IsPlaying)
-                    playButton.Image = VideoPlayer.Properties.Resources.pause;
-                else
-                    playButton.Image = VideoPlayer.Properties.Resources.play;
-
                 lecturePauseToolStripMenuItem.Enabled = playButton.Enabled = true;
                 arrêterToolStripMenuItem.Enabled = stopButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
-                rembobinToolStripMenuItem.Enabled = rewindButton.Enabled = true;
-                avanceRapideToolStripMenuItem.Enabled = forwardButton.Enabled = true;
-                débutArrêtToolStripMenuItem.Enabled = reccordButton.Enabled = true;
+                rembobinToolStripMenuItem.Enabled = rewindButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
+                avanceRapideToolStripMenuItem.Enabled = forwardButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
+                débutArrêtToolStripMenuItem.Enabled = reccordButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
                 fermerToolStripMenuItem.Enabled = true;
             }
+
+            if (_controller.IsPlaying && !_controller.IsFastPlaying)
+                playButton.Image = VideoPlayer.Properties.Resources.pause;
+            else
+                playButton.Image = VideoPlayer.Properties.Resources.play;
+
+            enregistrementEnCoursPictureBox.Visible = _controller.IsReccording;
         }
 
         private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +105,7 @@ namespace VideoPlayer
 
         private void lecturePauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(!_controller.IsPlaying)
+            if(!_controller.IsPlaying || _controller.IsFastPlaying)
                 _controller.Play();
             else
                 _controller.Pause();
@@ -130,16 +133,20 @@ namespace VideoPlayer
 
         private void reccordButton_Click(object sender, EventArgs e)
         {
-            if (_outputFile == null)
+            // Si lanregistrement n'est pas lancé
+            if (_controller.IsReccording == false)
             {
-                saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                // S'il n'y a pas de fichier de sortie
+                if (_outputFile == null)
                 {
-                    _outputFile = saveFileDialog1.FileName;
+                    saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        _outputFile = saveFileDialog1.FileName;
+                    }
                 }
             }
-
             _controller.Record(_outputFile);
             RefreshInterface();
         }

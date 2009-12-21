@@ -112,6 +112,12 @@ namespace VideoPlayer.State
         {
             get { return CurrentState.IsPlaying; }
         }
+
+        public bool IsFastPlaying
+        {
+            get { return CurrentState.IsFastPlaying; }
+        }
+
         public bool IsPaused
         {
             get{ return CurrentState.IsPaused;}

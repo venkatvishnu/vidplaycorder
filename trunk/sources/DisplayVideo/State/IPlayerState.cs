@@ -14,6 +14,7 @@
 
         bool IsPlaying { get; }
         bool IsPaused { get; }
+        bool IsFastPlaying { get; }
         bool IsReccording { get; }
         bool FileOpen { get; }
     }

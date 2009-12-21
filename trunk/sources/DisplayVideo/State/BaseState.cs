@@ -71,6 +71,11 @@ namespace VideoPlayer.State
             get { return false; }
         }
 
+        public virtual bool IsFastPlaying
+        {
+            get { return false; }
+        }
+
         public virtual bool IsReccording
         {
             get { return false; }
