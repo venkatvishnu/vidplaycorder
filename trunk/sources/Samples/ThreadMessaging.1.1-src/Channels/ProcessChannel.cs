@@ -101,6 +101,39 @@ namespace ThreadMessaging
 			full.Release();
 		}
 
+        /// <summary>
+        /// Send a message to the channel with unlimited timeout.
+        /// </summary>
+        /// <param name="data">The byte array to send</param>
+        /// <remarks>This member is thread-safe.</remarks>
+        public void SendBytes(byte[] data)
+        {
+            try { empty.Acquire(); }
+            catch (System.Threading.ThreadInterruptedException e)
+            {
+                DumpItemSynchronized(data);
+                throw e;
+            }
+            try { mutex.Acquire(); }
+            catch (System.Threading.ThreadInterruptedException e)
+            {
+                DumpItemSynchronized(data);
+                empty.Release();
+                throw e;
+            }
+            queue.Enqueue();
+            try { queue.WriteBytes(data); }
+            catch (Exception e)
+            {
+                queue.RollbackEnqueue();
+                mutex.Release();
+                empty.Release();
+                throw e;
+            }
+            mutex.Release();
+            full.Release();
+        }
+
 		/// <summary>
 		/// Send a message to the channel with unlimited timeout.
 		/// </summary>
@@ -159,6 +192,30 @@ namespace ThreadMessaging
 			return item;
 		}
 
+        /// <summary>
+        /// Receive a message from the channel with unlimited timeout.
+        /// </summary>
+        /// <returns>The received array of byte.</returns>
+        /// <remarks>This member is thread safe.</remarks>
+        public byte[] ReceiveBytes()
+        {
+            full.Acquire();
+            mutex.Acquire();
+            byte[] data = new byte[queue.BytesPerEntry];
+            queue.Dequeue();
+            try { queue.ReadBytes(data); }
+            catch (Exception e)
+            {
+                queue.RollbackDequeue();
+                mutex.Release();
+                full.Release();
+                throw e;
+            }
+            mutex.Release();
+            empty.Release();
+            return data;
+        }
+
 		/// <summary>
 		/// Receive a message from the channel with limited timeout.
 		/// </summary>
@@ -174,7 +231,7 @@ namespace ThreadMessaging
 			try	{item = queue.ReadDeserialize(0);}
 			catch(Exception e)
 			{
-				queue.RollbackDequeue();
+                queue.RollbackDequeue();
 				mutex.Release();
 				full.Release();
 				throw e;

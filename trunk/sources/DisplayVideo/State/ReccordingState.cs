@@ -1,9 +1,21 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using InterProcessCommunication;
+using ThreadMessaging;
 
 namespace VideoPlayer.State
 {
     class ReccordingState : TimerState
     {
+        private VideoTranfert _videoTransfert;
+        private Process _process;
+
+        private Queue<Bitmap> _imageToRecord = new Queue<Bitmap>();
+
+
         public ReccordingState(PlayerStateController playerStateController, VideoSource videoSource, IFrameDisplay frameDisplay) : base(playerStateController, videoSource, frameDisplay)
         {
         }
@@ -14,7 +26,10 @@ namespace VideoPlayer.State
 
             _frameDisplay.UpdateFrame(frame);
 
-            //TODO: Envoyé l'image au reccorder
+            lock (_imageToRecord)
+            {
+                _imageToRecord.Enqueue(frame);
+            }
         }
 
         public override void Forward()
@@ -43,10 +58,31 @@ namespace VideoPlayer.State
 
         public override void Begin()
         {
+            StartRecording();
+
             _timer.Resolution = 1;
             _timer.Period = (int)(1000 / _videoSource.FrameRate);
             base.Begin();
             _videoSource.Step = 1;
+        }
+
+        private void StartRecording()
+        {
+            // Définie la communication à partir de la taille d'une image
+            var bitmapSize = VideoTranfert.ImageToBytes(_videoSource.GetCurrentFrame()).Length;
+            
+            _videoTransfert = new VideoTranfert(bitmapSize);
+            _videoTransfert.RecordInfo = new VideoTranfert.RecordInformation(){BitmapSize=bitmapSize,FrameRate = _videoSource.FrameRate};
+
+            new System.Threading.Thread(this.TransfertToRecorder).Start();
+        }
+
+        private void StopRecording()
+        {
+            lock (_imageToRecord)
+            {
+                _imageToRecord.Enqueue(null);
+            }
         }
 
         public override bool IsPlaying
@@ -63,6 +99,36 @@ namespace VideoPlayer.State
             {
                 return true;
             }
+        }
+
+        public void TransfertToRecorder()
+        {
+            // Lance le processus
+            //_process = System.Diagnostics.Process.Start("VideoReccorder.exe");
+
+            bool fin = true;
+
+            do
+            {
+                Bitmap frame = null;
+                lock (_imageToRecord)
+                {
+                    if (_imageToRecord.Count > 0)
+                    {
+                        frame = _imageToRecord.Dequeue();
+                        fin = true;
+                    }
+                    else
+                    {
+                        fin = false;
+                    }
+                }
+                if (frame != null)
+                {
+                    _videoTransfert.WriteBitmap(frame);
+                    fin = false;
+                }
+            } while (!fin);
         }
     }
 }
