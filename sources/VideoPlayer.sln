@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VideoPlayer", "VideoPlayer"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F95C3D1F-E39E-46D8-BEF9-4819AA9F9FE9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{93D11B37-A316-4E96-8127-9F79079CD374}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "VidplaycorderSetup", "VidplaycorderSetup\VidplaycorderSetup.vdproj", "{F9C3D51C-43CA-4FBB-94C4-F5B76E73F754}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,8 @@ Global
 		{F74FAB98-7F17-4A91-AF83-D43A173FCF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F74FAB98-7F17-4A91-AF83-D43A173FCF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F74FAB98-7F17-4A91-AF83-D43A173FCF46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C3D51C-43CA-4FBB-94C4-F5B76E73F754}.Debug|Any CPU.ActiveCfg = Debug
+		{F9C3D51C-43CA-4FBB-94C4-F5B76E73F754}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,6 @@ Global
 		{869FEB0E-8791-4417-AB42-311E44D76D17} = {C8FD6AF3-2883-44A2-9B86-DA0299BEBA55}
 		{182543D9-8AE4-4112-890E-3EC4C03CEE45} = {C8FD6AF3-2883-44A2-9B86-DA0299BEBA55}
 		{F74FAB98-7F17-4A91-AF83-D43A173FCF46} = {F95C3D1F-E39E-46D8-BEF9-4819AA9F9FE9}
+		{F9C3D51C-43CA-4FBB-94C4-F5B76E73F754} = {93D11B37-A316-4E96-8127-9F79079CD374}
 	EndGlobalSection
 EndGlobal

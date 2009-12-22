@@ -1,5 +1,4 @@
 ﻿using System;
-using User.DirectShow;
 using AviFile;
 using System.Drawing;
 
@@ -7,7 +6,6 @@ namespace VideoReccorder
 {
     public class Program
     {
-        private FrameGrabber fg; //Pour générer un tableau de bitmap
         private AviManager aviManager;
 
         /// <summary>
