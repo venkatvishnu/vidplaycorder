@@ -13,8 +13,7 @@ namespace VideoPlayer.State
         private VideoTranfert _videoTransfert;
         private Process _process;
 
-        private Queue<Bitmap> _imageToRecord = new Queue<Bitmap>();
-
+        private Queue<VideoTranfert.Frame> _imageToRecord = new Queue<VideoTranfert.Frame>();
 
         public ReccordingState(PlayerStateController playerStateController, VideoSource videoSource, IFrameDisplay frameDisplay) : base(playerStateController, videoSource, frameDisplay)
         {
@@ -28,7 +27,9 @@ namespace VideoPlayer.State
 
             lock (_imageToRecord)
             {
-                _imageToRecord.Enqueue(frame);
+                _imageToRecord.Enqueue(new VideoTranfert.Frame()
+                {FrameRate = _videoSource.FrameRate,
+                    ImageByte = VideoTranfert.ImageToBytes(frame)});
             }
         }
 
@@ -71,8 +72,7 @@ namespace VideoPlayer.State
             // Définie la communication à partir de la taille d'une image
             var bitmapSize = VideoTranfert.ImageToBytes(_videoSource.GetCurrentFrame()).Length;
             
-            _videoTransfert = new VideoTranfert(bitmapSize);
-            _videoTransfert.RecordInfo = new VideoTranfert.RecordInformation(){BitmapSize=bitmapSize,FrameRate = _videoSource.FrameRate};
+            _videoTransfert = new VideoTranfert();
 
             new System.Threading.Thread(this.TransfertToRecorder).Start();
         }
@@ -110,7 +110,7 @@ namespace VideoPlayer.State
 
             do
             {
-                Bitmap frame = null;
+                VideoTranfert.Frame frame = null;
                 lock (_imageToRecord)
                 {
                     if (_imageToRecord.Count > 0)
@@ -125,7 +125,7 @@ namespace VideoPlayer.State
                 }
                 if (frame != null)
                 {
-                    _videoTransfert.WriteBitmap(frame);
+                    _videoTransfert.WriteFrame(frame);
                     fin = false;
                 }
             } while (!fin);
