@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace VideoPlayer.State
 {
-    class PlayerStateController
+    class PlayerStateController:IDisposable
     {
         private VideoSource _source;
 
@@ -55,9 +51,6 @@ namespace VideoPlayer.State
             get{ return Traitement.Instance.Brillance;}
             set { Traitement.Instance.Brillance = value; }
         }
-
-
-
       
         /// <summary>
         /// Tableau d'entier représentant la matrice de convolution pour le traitement
@@ -103,9 +96,9 @@ namespace VideoPlayer.State
             CurrentState.Rewind();
         }
 
-        public void Record(string _outputFile)
+        public void Record(string outputFile)
         {
-            CurrentState.Record(_outputFile);
+            CurrentState.Record(outputFile);
         }
 
         public bool IsPlaying
@@ -129,6 +122,21 @@ namespace VideoPlayer.State
         public bool FileOpen
         {
             get{ return CurrentState.FileOpen;}
+        }
+
+        public void Dispose()
+        {
+            if(FileOpen)
+                CurrentState.Close();
+            
+            InitialState.Dispose();
+            StoppedState.Dispose();
+            PlayingState.Dispose();
+            PausedState.Dispose();
+            ReccordingState.Dispose();
+            PauseReccordingState.Dispose();
+            RewindingState.Dispose();
+            ForwardingState.Dispose();
         }
     }
 }

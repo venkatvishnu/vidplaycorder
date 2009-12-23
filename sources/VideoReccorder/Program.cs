@@ -6,51 +6,80 @@ namespace VideoReccorder
 {
     public class Program
     {
-        private AviManager aviManager;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static int Main()
         {
+            StartRecording();
+            return 0;
         }
       
-        public void StartRecording()
+        public static void StartRecording()
         {
+            Console.WriteLine("Start Recording ...");
+
+            Console.ReadLine();
+
             var videoTransfert = new InterProcessCommunication.VideoTranfert();
 
-            string filename = videoTransfert.FileName;
-            Bitmap bitmap = (Bitmap)Image.FromFile(filename);
+            VideoStream aviStream = null;
+            AviManager aviManager = null;
 
-            //TODO : lire par MMF le nom du fichier de sorti
-            //TODO : lire par MMF les fichier bitmap modifié
-           // bitmap.loadFromStream
-            aviManager = new AviManager(filename, false);
-            VideoStream aviStream =  aviManager.AddVideoStream(true, 2, bitmap); //bitmap étant la première image, elle sert a sizer le format du vidéo de sorti
-          
-            
-            int count = 0;
-            
-           
-            //On doit lire toutes les images passé par mmf, et les ajouté au stream
-            //for (int n = 1; n < txtFileNames.Lines.Length; n++)
-            //{
-               // if (txtFileNames.Lines[n].Trim().Length > 0)
-                //{
-                  //  bitmap = (Bitmap)Bitmap.FromFile(txtFileNames.Lines[n]);
-                    aviStream.AddFrame(bitmap);
+            bool endOfReccord = false;
+            string lastFileReccord = "";
+
+            do
+            {
+                // Récupère le frame suivant
+                var frame = videoTransfert.ReadFrame();
+                Console.WriteLine("Frame read ...");
+
+                // Vérfie que nous somme pas à la fin de l'enregistrement
+                endOfReccord = frame.EndOfRecord;
+                if(!endOfReccord)
+                {
+                    var bitmap = frame.Bitmap;
+                    // Si le nom du fichier d'enregistrement est changé un nouveau fichier vidéo doit être créé
+                    if (lastFileReccord.Equals(frame.FileName) == false)
+                    {
+                        // Ferme les streams s'ils existent
+                        if (aviStream != null)
+                        {
+                            aviStream.Close();
+                            Console.WriteLine(@"Close video stream ""{0}"" ...", lastFileReccord);
+                        }
+
+                        if (aviManager != null)
+                            aviManager.Close();
+
+                        lastFileReccord = frame.FileName;
+                        aviManager = new AviManager(lastFileReccord, false);
+                        aviStream = aviManager.AddVideoStream(false,frame.FrameRate, bitmap); //bitmap étant la première image, elle sert a sizer le format du vidéo de sorti
+                        Console.WriteLine(@"Create video stream ""{0}"" ...",lastFileReccord);
+                    }
+                    else
+                    {
+                        aviStream.AddFrame(bitmap);
+                    }
                     bitmap.Dispose();
-                    //count++;
-               // }
-            //}
-            aviStream.Close();
-            aviManager.Close();
-        }
+                }
+                
+            } while (!endOfReccord);
 
-        public void StoptRecording()
-        {
-            
+            // Ferme les streams s'ils existent
+            if (aviStream != null)
+            {
+                aviStream.Close();
+                Console.WriteLine(@"Close video stream ""{0}"" ...", lastFileReccord);
+            }
+
+            if (aviManager != null)
+                aviManager.Close();
+
+
+            Console.WriteLine("End Recording ...");
         }
     }
 }

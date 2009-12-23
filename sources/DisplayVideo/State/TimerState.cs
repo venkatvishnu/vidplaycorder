@@ -14,7 +14,7 @@ namespace VideoPlayer.State
             _timeProc = new MultimediaTimer.TimeProc(Tick);
         }
 
-        public override void Begin()
+        public override void Begin(object argument)
         {
             _timer.Start(_timeProc);
         }
@@ -43,6 +43,11 @@ namespace VideoPlayer.State
         private void Tick(int id, int msg, int user, int param1, int param2)
         {
             DoAction();
+        }
+
+        protected override void Disposing()
+        {
+            _timer.Dispose();
         }
 
         public abstract void DoAction();
