@@ -132,6 +132,8 @@
             // 
             // lectureToolStripMenuItem
             // 
+            this.lectureToolStripMenuItem.Checked = true;
+            this.lectureToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.lectureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lecturePauseToolStripMenuItem,
             this.arrêterToolStripMenuItem,
@@ -218,7 +220,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 66);
             this.tableLayoutPanel1.TabIndex = 1;
             // 

@@ -23,7 +23,7 @@ namespace VideoPlayer.State
 
         public override void Record(string _outputFile)
         {
-            ChangeState(_playerStateController.PauseReccordingState);
+            ChangeState(_playerStateController.PauseReccordingState, _outputFile);
         }
 
         public override bool IsPaused

@@ -1,6 +1,6 @@
 ﻿namespace VideoPlayer.State
 {
-    public interface IPlayerState
+    public interface IPlayerState : System.IDisposable
     {
         void Open(string file);
         void Close();
@@ -10,7 +10,7 @@
         void Forward();
         void Rewind();
         void Record(string _outputFile);
-        void Begin();
+        void Begin(object argument);
 
         bool IsPlaying { get; }
         bool IsPaused { get; }

@@ -57,7 +57,7 @@ namespace VideoPlayer.State
             throw new NotSupportedException();
         }
 
-        public virtual void Begin()
+        public virtual void Begin(object argument)
         {
         }
 
@@ -89,8 +89,27 @@ namespace VideoPlayer.State
 
         protected void ChangeState(IPlayerState state)
         {
+            ChangeState(state,null);
+        }
+
+        protected void ChangeState(IPlayerState state,object argument)
+        {
             _playerStateController.CurrentState = state;
-            _playerStateController.CurrentState.Begin();
+            _playerStateController.CurrentState.Begin(argument);
+        }
+
+        /// <summary>
+        /// Exécute les tâches définies par l'application associées à la libération ou à la redéfinition des ressources non managées.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            Disposing();
+        }
+
+        protected virtual void Disposing()
+        {
+            
         }
     }
 }

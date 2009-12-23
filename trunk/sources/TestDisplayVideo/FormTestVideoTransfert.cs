@@ -25,7 +25,7 @@ namespace TestDisplayVideo
 
             var f = v.ReadFrame();
 
-            pictureBox2.Image = VideoTranfert.Frame.BytesToImage(f.ImageByte);
+            pictureBox2.Image = f.Bitmap;
             label1.Text = f.FileName;
             Console.WriteLine(f.FrameRate);
             Console.WriteLine(f.EndOfRecord);

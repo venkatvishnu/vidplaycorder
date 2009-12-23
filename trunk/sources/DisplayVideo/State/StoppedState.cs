@@ -11,7 +11,7 @@ namespace VideoPlayer.State
             ChangeState(_playerStateController.PlayingState);
         }
 
-        public override void Begin()
+        public override void Begin(object argument)
         {
             _videoSource.Step = 1;
             _videoSource.Reset();

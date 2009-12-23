@@ -18,35 +18,52 @@ namespace InterProcessCommunication
         [Serializable]
         public class Frame 
         {
+            private string _fileName;
+            private bool _endOfRecord;
+            private double _frameRate;
+            private Bitmap _bitmap;
+
+            /// <summary>
+            /// Frame contenant un image
+            /// </summary>
+            /// <param name="filename"></param>
+            /// <param name="frameRate"></param>
+            /// <param name="image"></param>
             public Frame(string filename,double frameRate,Bitmap image)
             {
-                FileName = filename;
-                FrameRate = frameRate;
-                ImageByte = ImageToBytes(image);
-                EndOfRecord = false;
+                _fileName = filename;
+                _frameRate = frameRate;
+                _bitmap = image;
+                _endOfRecord = false;
             }
-            
-            public string FileName;
-            public bool EndOfRecord;
-            public double FrameRate;
-            public byte[] ImageByte;
 
-            public static byte[] ImageToBytes(Bitmap image)
+            /// <summary>
+            /// Frame de fin d'enregistrement
+            /// </summary>
+            public Frame()
             {
-                var s = new System.IO.MemoryStream();
-                image.Save(s, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                var b = new byte[s.Length];
-                s.Read(b, 0, b.Length);
-                return b;
+                _endOfRecord = true;
             }
 
-            public static Bitmap BytesToImage(byte[] buffer)
+            public string FileName
             {
-                var s = new System.IO.MemoryStream(buffer);
-                return new Bitmap(s);
+                get { return _fileName; }
             }
 
+            public bool EndOfRecord
+            {
+                get { return _endOfRecord; }
+            }
+
+            public double FrameRate
+            {
+                get { return _frameRate; }
+            }
+
+            public Bitmap Bitmap
+            {
+                get { return _bitmap; }
+            }
         }
 
         //private MemoryMappedFile _mmfRecordFile;
@@ -57,31 +74,9 @@ namespace InterProcessCommunication
 
         public VideoTranfert()
         {
-            //_mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
-            //_mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            //_semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem",1,1);
-
-            //_mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite,128);
-            //_mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            //_semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
-
-            // Un frame à une langueur maximal de 1MB
-            _pictureTransfert = new ProcessChannel(512, "VidplaycorderPciture", 1024*1024);
+            // Crée un MMF pour contenir 512 frame de 1MB
+            _pictureTransfert = new ProcessChannel(256, "VidplaycorderPciture", 2*1024*1024);
         }
-
-         //public VideoTranfert()
-         //{
-         //   //_mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
-         //   //_mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-         //   //_semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem", 1, 1);
-
-         //   _mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 128);
-         //   _mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-         //   _semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
-
-         //   _pictureTransfert = new ProcessChannel(512, "VidplaycorderPciture", 1024*1024);
-            
-         //}
         
 
         
@@ -98,8 +93,7 @@ namespace InterProcessCommunication
         /// </summary>
         public Frame ReadFrame()
         {
-            var buffer = _pictureTransfert.Receive();
-            return buffer as Frame;
+            return _pictureTransfert.Receive() as Frame;
         }
 
         /// <summary>
@@ -108,7 +102,6 @@ namespace InterProcessCommunication
         /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
-            _pictureTransfert.Dump();
             _pictureTransfert.Dispose();
         }
     }

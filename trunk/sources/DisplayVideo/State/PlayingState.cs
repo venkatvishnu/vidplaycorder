@@ -43,14 +43,14 @@ namespace VideoPlayer.State
         public override void Record(string _outputFile)
         {
             _timer.Stop();
-            ChangeState(_playerStateController.ReccordingState);
+            ChangeState(_playerStateController.ReccordingState, _outputFile);
         }
 
-        public override void Begin()
+        public override void Begin(object argument)
         {
             _timer.Resolution = 1;
             _timer.Period = (int)(1000 / _videoSource.FrameRate);
-            base.Begin();
+            base.Begin(argument);
             _videoSource.Step = 1;
         }
 

@@ -55,6 +55,7 @@ namespace VideoPlayer
 
         private void DisplayVideo_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _controller.Dispose();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
@@ -77,6 +78,7 @@ namespace VideoPlayer
                 avanceRapideToolStripMenuItem.Enabled = forwardButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
                 débutArrêtToolStripMenuItem.Enabled = reccordButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
                 fermerToolStripMenuItem.Enabled = true;
+                sélectionnerFichierDenregistrementToolStripMenuItem.Enabled = !(_controller.IsReccording && _controller.IsPlaying);
             }
 
             if (_controller.IsPlaying && !_controller.IsFastPlaying)
@@ -147,7 +149,11 @@ namespace VideoPlayer
                     }
                 }
             }
-            _controller.Record(_outputFile);
+
+            // Il doit y avoir une fichier de sortie pour l'enregistrement
+            if(!string.IsNullOrEmpty(_outputFile))
+                _controller.Record(_outputFile);
+
             RefreshInterface();
         }
 

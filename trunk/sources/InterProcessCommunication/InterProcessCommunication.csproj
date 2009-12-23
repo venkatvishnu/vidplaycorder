@@ -44,7 +44,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ThreadMessaging, Version=1.1.3643.24414, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ThreadMessaging, Version=1.1.3643.27236, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ThreadMessaging.dll</HintPath>
     </Reference>
