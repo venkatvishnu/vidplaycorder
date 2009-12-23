@@ -9,161 +9,72 @@ namespace InterProcessCommunication
 {
     public class VideoTranfert : IDisposable
     {
+        //[Serializable]
+        //public class RecordInformation
+        //{
+        //    public int ChannelSize;
+        //}
+
         [Serializable]
-        public class RecordInformation
+        public class Frame 
         {
+            public string FileName;
+            public bool EndOfRecord;
             public double FrameRate;
-            public int BitmapSize;
+            public byte[] ImageByte;
         }
 
-        private MemoryMappedFile _mmfRecordFile;
-        private MemoryMappedFileView _mmfRecordFileView;
-        private ProcessSemaphore _semaphoreReccordFile;
+        //private MemoryMappedFile _mmfRecordFile;
+        //private MemoryMappedFileView _mmfRecordFileView;
+        //private ProcessSemaphore _semaphoreReccordFile;
 
-        private MemoryMappedFile _mmfReccordInfo;
-        private MemoryMappedFileView _mmfReccordInfoView;
-        private ProcessSemaphore _semaphoreReccordInfo;
+        private readonly ProcessChannel _pictureTransfert;
 
-        private ProcessChannel _pictureTransfert;
-
-        public VideoTranfert(int bitmapSize)
+        public VideoTranfert()
         {
-            _mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
-            _mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            _semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem",1,1);
+            //_mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
+            //_mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
+            //_semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem",1,1);
 
-            _mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite,128);
-            _mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            _semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
+            //_mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite,128);
+            //_mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
+            //_semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
 
-            _pictureTransfert = new ProcessChannel(bitmapSize * 400, "VidplaycorderPciture", bitmapSize);
-            FileName = "\n";
-            RecordInfo = new RecordInformation(){BitmapSize = bitmapSize,FrameRate = 25};
+            // Un frame à une langueur maximal de 1MB
+            _pictureTransfert = new ProcessChannel(512, "VidplaycorderPciture", 1024*1024);
         }
 
-         public VideoTranfert()
-         {
-            _mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
-            _mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            _semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem", 1, 1);
+         //public VideoTranfert()
+         //{
+         //   //_mmfRecordFile = MemoryMappedFile.CreateFile("VidplaycorderRecordFile.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 1024);
+         //   //_mmfRecordFileView = _mmfRecordFile.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
+         //   //_semaphoreReccordFile = new ProcessSemaphore("VidplaycorderRecordFile.Sem", 1, 1);
 
-            _mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 128);
-            _mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
-            _semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
+         //   _mmfReccordInfo = MemoryMappedFile.CreateFile("VidplaycorderRecordInfo.MMF", ThreadMessaging.MemoryMappedFile.FileAccess.ReadWrite, 128);
+         //   _mmfReccordInfoView = _mmfReccordInfo.CreateView(0, 1024, MemoryMappedFileView.ViewAccess.ReadWrite);
+         //   _semaphoreReccordInfo = new ProcessSemaphore("VidplaycorderRecordInfo.Sem", 1, 1);
 
-            _pictureTransfert = new ProcessChannel(RecordInfo.BitmapSize * 400, "VidplaycorderPciture", RecordInfo.BitmapSize);
-            FileName = "\n";
-         }
+         //   _pictureTransfert = new ProcessChannel(512, "VidplaycorderPciture", 1024*1024);
+            
+         //}
+        
+
+        
         /// <summary>
-        /// Nom du fichier dans lequel le vidéo sera enregistré
+        /// Ajout un frame à la queue
         /// </summary>
-        public string FileName
+        public void WriteFrame(Frame frame)
         {
-            set
-            {
-                _semaphoreReccordFile.Acquire();
-
-                try
-                {
-                    _mmfRecordFileView.WriteBytes(System.Text.Encoding.Unicode.GetBytes(value + "\n"));
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    _semaphoreReccordFile.Release();
-                }
-            }
-
-            get
-            {
-
-                _semaphoreReccordFile.Acquire();
-
-                byte[] buffer = new byte[1024];
-
-                try
-                {
-                    _mmfRecordFileView.ReadBytes(buffer);
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    _semaphoreReccordFile.Release();                    
-                }
-
-                var tempString = Encoding.Unicode.GetString(buffer);
-                var afterLastValidChar = tempString.IndexOf("\n");
-                return tempString.Substring(0,afterLastValidChar);
-            }
+            _pictureTransfert.Send(frame);
         }
 
         /// <summary>
-        /// Information sur la vidéo
+        /// Lie le prochain frame dans la queue
         /// </summary>
-        public RecordInformation RecordInfo
+        public Frame ReadFrame()
         {
-            set
-            {
-                _semaphoreReccordInfo.Acquire();
-
-                try
-                {
-                    _mmfReccordInfoView.WriteSerialize(value);
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    _semaphoreReccordInfo.Release();
-                }
-            }
-
-            get
-            {
-                _semaphoreReccordInfo.Acquire();
-
-                RecordInformation information = null;
-                try
-                {
-                    information = _mmfReccordInfoView.ReadDeserialize() as RecordInformation;
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    _semaphoreReccordInfo.Release();
-                }
-
-                return information;
-            }
-        }
-
-        /// <summary>
-        /// Ajout un bitmap à la queue
-        /// </summary>
-        /// <param name="image"></param>
-        public void WriteBitmap(Bitmap image)
-        {
-            _pictureTransfert.SendBytes(ImageToBytes(image));
-        }
-
-        /// <summary>
-        /// Lie le prochain bitmap dans la queue
-        /// </summary>
-        /// <returns>Indique false si c'est le signal de la fin de l'enregistrement</returns>
-        public bool ReadBitmap(out Bitmap image)
-        {
-            var buffer = _pictureTransfert.ReceiveBytes();
-
-            image = BytesToImage(buffer);
-
-            return true;
+            var buffer = _pictureTransfert.Receive();
+            return buffer as Frame;
         }
 
         public static byte[] ImageToBytes(Bitmap image)
@@ -190,14 +101,6 @@ namespace InterProcessCommunication
         {
             _pictureTransfert.Dump();
             _pictureTransfert.Dispose();
-
-            _semaphoreReccordFile.Dispose();
-            _mmfRecordFile.Dispose();
-            _mmfRecordFileView.Dispose();
-            
-            _semaphoreReccordInfo.Dispose();
-            _mmfReccordInfo.Dispose();
-            _mmfReccordInfoView.Dispose();
         }
     }
 }
