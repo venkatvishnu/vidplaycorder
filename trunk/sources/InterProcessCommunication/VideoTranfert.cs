@@ -18,10 +18,35 @@ namespace InterProcessCommunication
         [Serializable]
         public class Frame 
         {
+            public Frame(string filename,double frameRate,Bitmap image)
+            {
+                FileName = filename;
+                FrameRate = frameRate;
+                ImageByte = ImageToBytes(image);
+                EndOfRecord = false;
+            }
+            
             public string FileName;
             public bool EndOfRecord;
             public double FrameRate;
             public byte[] ImageByte;
+
+            public static byte[] ImageToBytes(Bitmap image)
+            {
+                var s = new System.IO.MemoryStream();
+                image.Save(s, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                var b = new byte[s.Length];
+                s.Read(b, 0, b.Length);
+                return b;
+            }
+
+            public static Bitmap BytesToImage(byte[] buffer)
+            {
+                var s = new System.IO.MemoryStream(buffer);
+                return new Bitmap(s);
+            }
+
         }
 
         //private MemoryMappedFile _mmfRecordFile;
@@ -75,22 +100,6 @@ namespace InterProcessCommunication
         {
             var buffer = _pictureTransfert.Receive();
             return buffer as Frame;
-        }
-
-        public static byte[] ImageToBytes(Bitmap image)
-        {
-            var s = new System.IO.MemoryStream();
-            image.Save(s,System.Drawing.Imaging.ImageFormat.Bmp);
-
-            var b = new byte[s.Length];
-            s.Read(b, 0, b.Length);
-            return b;
-        }
-
-        public static Bitmap BytesToImage(byte[] buffer)
-        {
-            var s = new System.IO.MemoryStream(buffer);
-            return new Bitmap(s);
         }
 
         /// <summary>
