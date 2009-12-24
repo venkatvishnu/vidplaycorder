@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoReccorder", "VideoReccorder\VideoReccorder.csproj", "{182543D9-8AE4-4112-890E-3EC4C03CEE45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayVideo", "DisplayVideo\DisplayVideo.csproj", "{869FEB0E-8791-4417-AB42-311E44D76D17}"
+	ProjectSection(ProjectDependencies) = postProject
+		{182543D9-8AE4-4112-890E-3EC4C03CEE45} = {182543D9-8AE4-4112-890E-3EC4C03CEE45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDisplayVideo", "TestDisplayVideo\TestDisplayVideo.csproj", "{F74FAB98-7F17-4A91-AF83-D43A173FCF46}"
 EndProject

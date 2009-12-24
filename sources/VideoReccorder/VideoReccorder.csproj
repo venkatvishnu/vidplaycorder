@@ -44,6 +44,7 @@
   -->
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AviFile, Version=1.0.3641.26299, Culture=neutral, processorArchitecture=MSIL">
@@ -69,6 +70,8 @@
     <PostBuildEvent>COPY "$(ProjectDir)$(OutDir)*.*" "$(SolutionDir)DisplayVideo\$(OutDir)" /y</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="record.ico" />
+    <Content Include="record.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
