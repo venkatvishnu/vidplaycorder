@@ -35,7 +35,7 @@ namespace VideoPlayer
             
             var traitement = Traitement.Instance;
             traitement.Contraste = Convert.ToDouble(contrasteNumericUpDown.Value);
-            traitement.Brillance = Convert.ToInt32(contrasteNumericUpDown.Value);
+            traitement.Brillance = Convert.ToInt32(brillanceNumericUpDown.Value);
 
             traitement.Convolution = new int[]
                                          {

@@ -14,14 +14,28 @@ namespace VideoPlayer
     {
 
         private delegate void RefreshImageDelegate(Bitmap image);
-
+        private delegate void RefreshInterfaceDelegate();
+        
         private PlayerStateController _controller;
+
         private string _outputFile = null;
 
         public DisplayVideo()
         {
             InitializeComponent();
-            
+
+            OutputFile = null;
+        }
+
+        public string OutputFile
+        {
+            get { return _outputFile; }
+            set
+            {
+                _outputFile = value;
+
+                recordFileToolStripLabel.Text = string.IsNullOrEmpty(_outputFile) ? "Aucun" : _outputFile;
+            }
         }
 
         private void paramètresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,11 +64,20 @@ namespace VideoPlayer
         private void DisplayVideo_Shown(object sender, EventArgs e)
         {
             _controller = new PlayerStateController(this);
+            _controller.CurrentStateChanged += new EventHandler(ControllerCurrentStateChanged);
             RefreshInterface();
+            BringToFront();
+        }
+
+        void ControllerCurrentStateChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new RefreshInterfaceDelegate(RefreshInterface));
         }
 
         private void DisplayVideo_FormClosing(object sender, FormClosingEventArgs e)
         {
+            UseWaitCursor = true;
+            Visible = false;
             _controller.Dispose();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
@@ -76,7 +99,7 @@ namespace VideoPlayer
                 arrêterToolStripMenuItem.Enabled = stopButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
                 rembobinToolStripMenuItem.Enabled = rewindButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
                 avanceRapideToolStripMenuItem.Enabled = forwardButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
-                débutArrêtToolStripMenuItem.Enabled = reccordButton.Enabled = _controller.IsPlaying || _controller.IsPaused;
+                débutArrêtToolStripMenuItem.Enabled = reccordButton.Enabled = (_controller.IsPlaying || _controller.IsPaused) && !_controller.IsFastPlaying;
                 fermerToolStripMenuItem.Enabled = true;
                 sélectionnerFichierDenregistrementToolStripMenuItem.Enabled = !(_controller.IsReccording && _controller.IsPlaying);
             }
@@ -139,36 +162,31 @@ namespace VideoPlayer
             if (_controller.IsReccording == false)
             {
                 // S'il n'y a pas de fichier de sortie
-                if (_outputFile == null)
+                if (string.IsNullOrEmpty(OutputFile))
                 {
-                    saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
-
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        _outputFile = saveFileDialog1.FileName;
-                    }
+                    SelectOutputFile();
                 }
             }
 
             // Il doit y avoir une fichier de sortie pour l'enregistrement
-            if(!string.IsNullOrEmpty(_outputFile))
-                _controller.Record(_outputFile);
+            if(!string.IsNullOrEmpty(OutputFile))
+                _controller.Record(OutputFile);
 
             RefreshInterface();
         }
 
-        private void DisplayVideo_Load(object sender, EventArgs e)
+        private void sélectionnerFichierDenregistrementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SelectOutputFile();
         }
 
-        private void sélectionnerFichierDenregistrementToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SelectOutputFile()
         {
             saveFileDialog1.Title = "Quel sera le nom du fichier vidéo de sorti?";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                _outputFile = saveFileDialog1.FileName;
+                OutputFile = saveFileDialog1.FileName;
             }
         }
     }

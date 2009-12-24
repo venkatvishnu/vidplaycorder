@@ -21,20 +21,32 @@ namespace VideoPlayer.State
         public ReccordingState(PlayerStateController playerStateController, VideoSource videoSource, IFrameDisplay frameDisplay) : base(playerStateController, videoSource, frameDisplay)
         {
             _videoTransfert = new VideoTranfert();
-            _process = Process.GetProcessesByName("VideoReccorder")[0];
+            _process = Process.Start("VideoReccorder");
+
+            // Lance le thread qui va tranférer les frames à l'autre process
+            _threadTransfertFrame = new Thread(TransfertToRecorder);
+            _threadTransfertFrame.Start();
+            
         }
 
         public override void DoAction()
         {
-            var frame = _videoSource.NextFrame();
-
-            _frameDisplay.UpdateFrame((Bitmap) frame.Clone());
-
-            var tranfertFrame = new VideoTranfert.Frame(_fileName, _videoSource.FrameRate, frame);
-
-            lock (_imageToRecord)
+            if (!_videoSource.EndOfFile)
             {
-                _imageToRecord.Enqueue(tranfertFrame);
+                var frame = _videoSource.NextFrame();
+                _frameDisplay.UpdateFrame((Bitmap)frame.Clone());
+
+                var tranfertFrame = new VideoTranfert.Frame(_fileName, _videoSource.FrameRate, frame);
+
+                lock (_imageToRecord)
+                {
+                    _imageToRecord.Enqueue(tranfertFrame);
+                }
+            }
+            else
+            {
+                _timer.Stop();
+                ChangeState(_playerStateController.StoppedState);
             }
         }
 
@@ -65,22 +77,11 @@ namespace VideoPlayer.State
         public override void Begin(object argument)
         {
             _fileName = (string) argument;
-            StartRecording();
 
             _timer.Resolution = 1;
             _timer.Period = (int)(1000 / _videoSource.FrameRate);
             base.Begin(argument);
             _videoSource.Step = 1;
-        }
-
-        private void StartRecording()
-        {
-            // Lance le thread qui va tranférer les frames s'il n'est pas créer
-            if (_threadTransfertFrame == null || !_threadTransfertFrame.IsAlive)
-            {
-                _threadTransfertFrame = new Thread(TransfertToRecorder);
-                _threadTransfertFrame.Start();
-            }
         }
 
         public override bool IsPlaying
@@ -130,30 +131,24 @@ namespace VideoPlayer.State
         {
             base.Disposing();
             
+            // Augmente la priorité du process et du thread d'enregistrement
+            _threadTransfertFrame.Priority = ThreadPriority.Highest;
+            _process.PriorityClass  = ProcessPriorityClass.AboveNormal;
+
             // Ajoute le frame indiquant la fin du processus d'enregistrement
             lock (_imageToRecord)
             {
                 _imageToRecord.Enqueue(new VideoTranfert.Frame());
             }
 
+            
             // Attend que le processus d'enregistrement soit terminé
-            //int count;
-
-            //do
-            //{
-            //    lock (_imageToRecord)
-            //    {
-            //        count = _imageToRecord.Count;
-            //    }
-
-            //    Thread.Sleep(100);
-
-            //} while (count>0);
-
             while (!_process.HasExited)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
             }
+
+            _videoTransfert.Dispose();
         }
     }
 }

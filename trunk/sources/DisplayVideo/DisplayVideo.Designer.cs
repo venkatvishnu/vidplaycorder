@@ -55,15 +55,21 @@
             this.playButton = new System.Windows.Forms.Button();
             this.rewindButton = new System.Windows.Forms.Button();
             this.forwardButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.enregistrementEnCoursPictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.framePictureBox = new System.Windows.Forms.PictureBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.recordFileToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enregistrementEnCoursPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -214,7 +220,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.enregistrementEnCoursPictureBox, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 448);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -313,12 +319,21 @@
             this.forwardButton.UseVisualStyleBackColor = false;
             this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.enregistrementEnCoursPictureBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(513, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(204, 60);
+            this.panel2.TabIndex = 2;
+            // 
             // enregistrementEnCoursPictureBox
             // 
             this.enregistrementEnCoursPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("enregistrementEnCoursPictureBox.Image")));
-            this.enregistrementEnCoursPictureBox.Location = new System.Drawing.Point(513, 3);
+            this.enregistrementEnCoursPictureBox.Location = new System.Drawing.Point(0, 0);
             this.enregistrementEnCoursPictureBox.Name = "enregistrementEnCoursPictureBox";
-            this.enregistrementEnCoursPictureBox.Size = new System.Drawing.Size(199, 60);
+            this.enregistrementEnCoursPictureBox.Size = new System.Drawing.Size(64, 60);
             this.enregistrementEnCoursPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.enregistrementEnCoursPictureBox.TabIndex = 1;
             this.enregistrementEnCoursPictureBox.TabStop = false;
@@ -326,18 +341,51 @@
             // openFileDialog1
             // 
             this.openFileDialog1.DefaultExt = "avi";
+            this.openFileDialog1.Filter = "Fichier vidéo windows (*.avi)|*.avi";
+            this.openFileDialog1.FilterIndex = 0;
             this.openFileDialog1.Title = "Fichier vidéo";
             // 
             // framePictureBox
             // 
             this.framePictureBox.BackColor = System.Drawing.Color.Black;
             this.framePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.framePictureBox.Location = new System.Drawing.Point(0, 24);
+            this.framePictureBox.Location = new System.Drawing.Point(0, 49);
             this.framePictureBox.Name = "framePictureBox";
-            this.framePictureBox.Size = new System.Drawing.Size(720, 424);
+            this.framePictureBox.Size = new System.Drawing.Size(720, 399);
             this.framePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.framePictureBox.TabIndex = 0;
             this.framePictureBox.TabStop = false;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "avi";
+            this.saveFileDialog1.Filter = "Fichier vidéo Windows (*.avi)|*.avi";
+            this.saveFileDialog1.Title = "Ouvrir";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.recordFileToolStripLabel,
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(720, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // recordFileToolStripLabel
+            // 
+            this.recordFileToolStripLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.recordFileToolStripLabel.Name = "recordFileToolStripLabel";
+            this.recordFileToolStripLabel.Size = new System.Drawing.Size(121, 22);
+            this.recordFileToolStripLabel.Text = "recordFileToolStripLabel";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(126, 22);
+            this.toolStripLabel1.Text = "Fichier d\'enregistrement:";
             // 
             // DisplayVideo
             // 
@@ -345,20 +393,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 514);
             this.Controls.Add(this.framePictureBox);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "DisplayVideo";
-            this.Load += new System.EventHandler(this.DisplayVideo_Load);
             this.Shown += new System.EventHandler(this.DisplayVideo_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisplayVideo_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enregistrementEnCoursPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.framePictureBox)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,8 +445,12 @@
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button reccordButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox enregistrementEnCoursPictureBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox enregistrementEnCoursPictureBox;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel recordFileToolStripLabel;
     }
 }
 

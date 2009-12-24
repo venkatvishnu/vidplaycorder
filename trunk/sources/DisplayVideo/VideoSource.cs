@@ -84,7 +84,7 @@ namespace VideoPlayer
             {
                 lock (this)
                 {
-                    return _frameBuffer.Count == 0 && _currentFrame > _videoStream.CountFrames;
+                    return _frameBuffer.Count == 0 && _currentFrame >= _videoStream.CountFrames;
                 }
             }
         }
@@ -102,6 +102,13 @@ namespace VideoPlayer
             {
                 lock (this)
                 {
+
+                    // Si le step change: Vide le buffer et met le frame courant à la position qui est joué
+                    if (_step != value)
+                    {
+                        _currentFrame -= _frameBuffer.Count*_step;
+                        _frameBuffer.Clear();
+                    }
                     _step = value;
                 }
             }
@@ -137,12 +144,8 @@ namespace VideoPlayer
                 _currentFrame = 0;
                 _frameBuffer.Clear();
             }
-
-            if (_threadFillBuffer == null)
-            {
-                _threadFillBuffer = new Thread(this.FillBuffer);
-                _threadFillBuffer.Priority = ThreadPriority.Highest;
-            }
+            
+            _threadFillBuffer = new Thread(this.FillBuffer) {Priority = ThreadPriority.Highest};
             _threadFillBuffer.Start();
 
         }
@@ -183,7 +186,8 @@ namespace VideoPlayer
                     if (_currentFrame >= 0 && _currentFrame < FrameCount)
                     {
                         var bitmap = _videoStream.GetBitmap(_currentFrame);
-                        //Traitement.Instance.Traiter(bitmap);
+                        if(Step==1)
+                            Traitement.Instance.Traiter(bitmap);
                         _frameBuffer.Enqueue(bitmap);
                         _currentFrame += Step;
                         
