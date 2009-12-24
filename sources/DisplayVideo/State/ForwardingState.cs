@@ -27,6 +27,11 @@ namespace VideoPlayer.State
             ChangeState(_playerStateController.RewindingState);
         }
 
+       public override void Forward()
+       {
+           
+       }
+
         public override void Play()
         {
             _timer.Stop();

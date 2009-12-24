@@ -79,7 +79,6 @@
     <Compile Include="EditionParametreTraitement.Designer.cs">
       <DependentUpon>EditionParametreTraitement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filtres.cs" />
     <Compile Include="State\ForwardingState.cs" />
     <Compile Include="State\IFrameDisplay.cs" />
     <Compile Include="State\BaseState.cs" />

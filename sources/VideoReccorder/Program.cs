@@ -20,8 +20,6 @@ namespace VideoReccorder
         {
             Console.WriteLine("Start Recording ...");
 
-            Console.ReadLine();
-
             var videoTransfert = new InterProcessCommunication.VideoTranfert();
 
             VideoStream aviStream = null;
@@ -33,8 +31,9 @@ namespace VideoReccorder
             do
             {
                 // Récupère le frame suivant
+                Console.Write("Reading frame");
                 var frame = videoTransfert.ReadFrame();
-                Console.WriteLine("Frame read ...");
+                Console.WriteLine(" ...");
 
                 // Vérfie que nous somme pas à la fin de l'enregistrement
                 endOfReccord = frame.EndOfRecord;
@@ -44,39 +43,45 @@ namespace VideoReccorder
                     // Si le nom du fichier d'enregistrement est changé un nouveau fichier vidéo doit être créé
                     if (lastFileReccord.Equals(frame.FileName) == false)
                     {
-                        // Ferme les streams s'ils existent
-                        if (aviStream != null)
+
+                        // Ferme le fichier s'il y en a un d'ouvert
+                        if (aviManager != null)
                         {
-                            aviStream.Close();
                             Console.WriteLine(@"Close video stream ""{0}"" ...", lastFileReccord);
+                            aviManager.Close();
                         }
 
-                        if (aviManager != null)
-                            aviManager.Close();
-
                         lastFileReccord = frame.FileName;
+
+                        Console.Write(@"Creating video stream ""{0}"" ...", lastFileReccord);
+                        
+                        // Si le fichier est déjà existant on le supprime
+                        if (System.IO.File.Exists(lastFileReccord))
+                            System.IO.File.Delete(lastFileReccord);
+
                         aviManager = new AviManager(lastFileReccord, false);
                         aviStream = aviManager.AddVideoStream(false,frame.FrameRate, bitmap); //bitmap étant la première image, elle sert a sizer le format du vidéo de sorti
-                        Console.WriteLine(@"Create video stream ""{0}"" ...",lastFileReccord);
+                        Console.WriteLine(" ...");
+                        
                     }
                     else
                     {
+                        Console.Write("Add frame to stream");
                         aviStream.AddFrame(bitmap);
+                        Console.WriteLine(" ...");
+                        
                     }
                     bitmap.Dispose();
                 }
                 
             } while (!endOfReccord);
 
-            // Ferme les streams s'ils existent
-            if (aviStream != null)
-            {
-                aviStream.Close();
-                Console.WriteLine(@"Close video stream ""{0}"" ...", lastFileReccord);
-            }
-
+            // Ferme le fichier s'il y en a un d'ouvert
             if (aviManager != null)
+            {
+                Console.WriteLine(@"Close video stream ""{0}"" ...", lastFileReccord);
                 aviManager.Close();
+            }
 
 
             Console.WriteLine("End Recording ...");

@@ -6,6 +6,9 @@ namespace VideoPlayer.State
     {
         private VideoSource _source;
 
+
+        public event EventHandler CurrentStateChanged;
+
         public PlayerStateController(IFrameDisplay frameDisplay)
         {
             _source = new VideoSource();
@@ -30,11 +33,27 @@ namespace VideoPlayer.State
         public IPlayerState ForwardingState{ get;private set; }
 
 
+        private IPlayerState _currentState;
+
         /// <summary>
         /// État courante du lecteur
         /// </summary>
-        public IPlayerState CurrentState{ get; set; }
-       
+        public IPlayerState CurrentState
+        {
+            get { return _currentState; }
+            set
+            {
+                _currentState = value;
+                InvokeCurrentStateChanged(EventArgs.Empty);
+            }
+        }
+
+        private void InvokeCurrentStateChanged(EventArgs e)
+        {
+            EventHandler changed = CurrentStateChanged;
+            if (changed != null) changed(this, e);
+        }
+
         /// <summary>
         /// Contraste utilisé pour le traitement de l'image (-255 à 255)
         /// </summary>
@@ -63,6 +82,9 @@ namespace VideoPlayer.State
 
         public void Open(string file)
         {
+            if(CurrentState.FileOpen)
+                CurrentState.Close();
+
             CurrentState.Open(file);
         }
 
@@ -133,10 +155,10 @@ namespace VideoPlayer.State
             StoppedState.Dispose();
             PlayingState.Dispose();
             PausedState.Dispose();
-            ReccordingState.Dispose();
             PauseReccordingState.Dispose();
             RewindingState.Dispose();
             ForwardingState.Dispose();
+            ReccordingState.Dispose();
         }
     }
 }
