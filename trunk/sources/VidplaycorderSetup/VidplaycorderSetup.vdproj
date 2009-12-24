@@ -16,61 +16,55 @@
         "Entry"
         {
         "MsmKey" = "8:_4A4475D610255027780578C52EA1EE73"
-        "OwnerKey" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
+        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4A4475D610255027780578C52EA1EE73"
-        "OwnerKey" = "8:_71612026096242889E6921097AD53AB6"
+        "OwnerKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_71612026096242889E6921097AD53AB6"
+        "MsmKey" = "8:_769F0F960BCA3E66A725D0754AA776A1"
+        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_769F0F960BCA3E66A725D0754AA776A1"
+        "OwnerKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_72AE78F4C6FA4DDE9533D7C869D15570"
+        "MsmKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F16A3898C40FAACD3FCF0FF56C336A92"
-        "OwnerKey" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F16A3898C40FAACD3FCF0FF56C336A92"
-        "OwnerKey" = "8:_71612026096242889E6921097AD53AB6"
+        "MsmKey" = "8:_F621806A2433432A5AD51669BAA04A95"
+        "OwnerKey" = "8:_769F0F960BCA3E66A725D0754AA776A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F621806A2433432A5AD51669BAA04A95"
-        "OwnerKey" = "8:_F16A3898C40FAACD3FCF0FF56C336A92"
+        "OwnerKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F621806A2433432A5AD51669BAA04A95"
-        "OwnerKey" = "8:_71612026096242889E6921097AD53AB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F621806A2433432A5AD51669BAA04A95"
-        "OwnerKey" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
+        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,13 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_71612026096242889E6921097AD53AB6"
+        "OwnerKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
+        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F16A3898C40FAACD3FCF0FF56C336A92"
+        "OwnerKey" = "8:_769F0F960BCA3E66A725D0754AA776A1"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -226,34 +220,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_72AE78F4C6FA4DDE9533D7C869D15570"
-            {
-            "SourcePath" = "8:C:\\Documents and Settings\\tgagnon.THOMAS-PC\\Bureau\\ico\\play.ico"
-            "TargetName" = "8:play.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_0D43FAA9ECBD4A8F94C63A9BEAADA7A5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F16A3898C40FAACD3FCF0FF56C336A92"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_769F0F960BCA3E66A725D0754AA776A1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:InterProcessCommunication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F16A3898C40FAACD3FCF0FF56C336A92"
+                    "_769F0F960BCA3E66A725D0754AA776A1"
                     {
                     "Name" = "8:InterProcessCommunication.dll"
                     "Attributes" = "3:512"
@@ -376,7 +350,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Vidplaycorder"
         "ProductCode" = "8:{D5BB69D5-02B5-4D83-B402-0E4993A35695}"
-        "PackageCode" = "8:{F5D9E5D7-79E8-4642-8E28-1CFA5AE18E71}"
+        "PackageCode" = "8:{B909876E-38F4-4F7C-9468-215460CE07EF}"
         "UpgradeCode" = "8:{AF170C0A-07CF-4C20-8094-756758ECB758}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -495,7 +469,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0E1437822D1344EE9C05E2CBC151CFAC"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D22093194656429CABD49AB1831EEAFE"
             {
             "Name" = "8:Vidplaycorder"
             "Arguments" = "8:"
@@ -503,10 +477,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_ECBF7942A31541DBAF5E62ED3B3B58D8"
+            "Target" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
             "Folder" = "8:_8696BBBCF3D94CE0851E88340BE5E01D"
             "WorkingFolder" = "8:_0D43FAA9ECBD4A8F94C63A9BEAADA7A5"
-            "Icon" = "8:_72AE78F4C6FA4DDE9533D7C869D15570"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -908,9 +882,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_71612026096242889E6921097AD53AB6"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9666258853454A288CD0AF8C0B90AF16"
             {
-            "SourcePath" = "8:..\\VideoReccorder\\obj\\Release\\VideoReccorder.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0D43FAA9ECBD4A8F94C63A9BEAADA7A5"
@@ -928,15 +902,43 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Any CPU"
-            "OutputGroupCanonicalName" = "8:Built"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectGuid" = "8:{869FEB0E-8791-4417-AB42-311E44D76D17}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C502F390E4BB433DA15632292A2B81E7"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0D43FAA9ECBD4A8F94C63A9BEAADA7A5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
             "OutputProjectGuid" = "8:{182543D9-8AE4-4112-890E-3EC4C03CEE45}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ECBF7942A31541DBAF5E62ED3B3B58D8"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D0E3F849DFF04BAFBD788B6495C1466F"
             {
             "SourcePath" = "8:..\\DisplayVideo\\obj\\Release\\VideoPlayer.exe"
             "TargetName" = "8:"
@@ -956,9 +958,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{869FEB0E-8791-4417-AB42-311E44D76D17}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EB8AE65D87314FF9B582FF01FA8E125B"
+            {
+            "SourcePath" = "8:..\\VideoReccorder\\obj\\Release\\VideoReccorder.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0D43FAA9ECBD4A8F94C63A9BEAADA7A5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{182543D9-8AE4-4112-890E-3EC4C03CEE45}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
