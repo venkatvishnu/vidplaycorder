@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>VideoReccorder.Program</StartupObject>
+    <ApplicationIcon>record.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,4 +68,7 @@
   <PropertyGroup>
     <PostBuildEvent>COPY "$(ProjectDir)$(OutDir)*.*" "$(SolutionDir)DisplayVideo\$(OutDir)" /y</PostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="record.ico" />
+  </ItemGroup>
 </Project>
