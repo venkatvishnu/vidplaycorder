@@ -118,6 +118,9 @@ namespace VideoPlayer.State
                 if (frame != null)
                 {
                     _videoTransfert.WriteFrame(frame);
+
+                    if (frame.Bitmap != null) frame.Bitmap.Dispose();
+
                     fin = frame.EndOfRecord;
                 }
                 else
