@@ -22,9 +22,10 @@ namespace VideoPlayer.State
         {
             _videoTransfert = new VideoTranfert();
             _process = Process.Start("VideoReccorder");
+            _process.PriorityClass = ProcessPriorityClass.AboveNormal;
 
             // Lance le thread qui va tranférer les frames à l'autre process
-            _threadTransfertFrame = new Thread(TransfertToRecorder);
+            _threadTransfertFrame = new Thread(TransfertToRecorder){Priority = ThreadPriority.AboveNormal};
             _threadTransfertFrame.Start();
             
         }
@@ -136,7 +137,7 @@ namespace VideoPlayer.State
             
             // Augmente la priorité du process et du thread d'enregistrement
             _threadTransfertFrame.Priority = ThreadPriority.Highest;
-            _process.PriorityClass  = ProcessPriorityClass.AboveNormal;
+            _process.PriorityClass  = ProcessPriorityClass.High;
 
             // Ajoute le frame indiquant la fin du processus d'enregistrement
             lock (_imageToRecord)
