@@ -70,19 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F621806A2433432A5AD51669BAA04A95"
+        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EB8AE65D87314FF9B582FF01FA8E125B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D0E3F849DFF04BAFBD788B6495C1466F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -95,6 +89,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_769F0F960BCA3E66A725D0754AA776A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F621806A2433432A5AD51669BAA04A95"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -159,6 +159,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    {
+                    "Name" = "8:.NET Framework 3.5 SP1"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -469,7 +482,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D22093194656429CABD49AB1831EEAFE"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_ADB4798130654F14A350F81017EE7083"
             {
             "Name" = "8:Vidplaycorder"
             "Arguments" = "8:"

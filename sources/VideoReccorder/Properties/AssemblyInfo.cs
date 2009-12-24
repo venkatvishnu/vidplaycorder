@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VideoRecorder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Maison")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Vidplaycorder")]
 [assembly: AssemblyCopyright("Copyright © Maison 2009")]
 [assembly: AssemblyTrademark("")]
